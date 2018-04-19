@@ -15,7 +15,7 @@
 		$("#button1").click(function() {
 
 			$.ajax({
-				url: 'lootSearch.php',
+				url: 'lootQuery.php',
 				data: {name: $( "#searchLootInput" ).val()},
 				success: function(data){
 					$('#searchLootResult').html(data);
@@ -32,7 +32,7 @@
 		$("#button2").click(function() {
 
 			$.ajax({
-				url: 'lootSearch.php',
+				url: 'lootQuery.php',
 				data: {value: $( "#searchLootValue" ).val(), gt: $( "#gt" ).prop("checked"), lt: $( "#lt" ).prop("checked")},
 				success: function(data){
 					$('#searchLootResult2').html(data);
@@ -49,7 +49,7 @@
 		$("#button3").click(function() {
 
 			$.ajax({
-				url: 'lootSearch.php',
+				url: 'lootQuery.php',
 				data: {weight: $( "#searchLootWeight" ).val(), gt2: $( "#gt2" ).prop("checked"), lt2: $( "#lt2" ).prop("checked")},
 				success: function(data){
 					$('#searchLootResult3').html(data);

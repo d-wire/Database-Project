@@ -15,7 +15,7 @@
 		$("#button1").click(function() {
 
 			$.ajax({
-				url: 'creatureSearch.php',
+				url: 'creatureQuery.php',
 				data: {species: $( "#searchCreatureSpecies" ).val()},
 				success: function(data){
 					$('#searchCreatureResult').html(data);

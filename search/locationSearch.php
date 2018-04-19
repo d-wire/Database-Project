@@ -15,7 +15,7 @@
 		$("#button1").click(function() {
 
 			$.ajax({
-				url: 'locationSearch.php',
+				url: 'locationQuery.php',
 				data: {region: $( "#searchRegionInput" ).val()},
 				success: function(data){
 					$('#searchRegionResult').html(data);
@@ -32,7 +32,7 @@
 		$("#button2").click(function() {
 
 			$.ajax({
-				url: 'locationSearch.php',
+				url: 'locationQuery.php',
 				data: {title: $( "#searchTitleInput" ).val()},
 				success: function(data){
 					$('#searchTitleResult').html(data);

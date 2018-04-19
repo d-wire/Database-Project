@@ -13,7 +13,7 @@
   			$stmt->execute();
   			$stmt->bind_result($actorID);
 
-        echo "<a class='btn btn-primary' href='weaponSearch.html'>Back</a>";
+        echo "<a class='btn btn-primary' href='weaponSearch.php'>Back</a>";
 
         $stmt->store_result();
         if($stmt->num_rows > 0) {
@@ -27,7 +27,7 @@
           for($i = 0; $i < $total; $i++) {
               if($stmt->prepare("select * from skyrim_NPC WHERE actorID = {$actorArray[$i]}") or die(mysqli_error($db))) {
                 $stmt->execute();
-                $stmt->bind_result($actorID, $name, $race);
+                $stmt->bind_result($actorID, $name, $race, $bag);
 
                 while($stmt->fetch()) {
                     echo "<tr><td>$actorID</td><td>$name</td><td>$race</td></tr>";

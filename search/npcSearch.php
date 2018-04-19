@@ -15,7 +15,7 @@
 		$("#button1").click(function() {
 
 			$.ajax({
-				url: 'npcSearch.php',
+				url: 'npcQuery.php',
 				data: {name: $( "#searchNPCName" ).val()},
 				success: function(data){
 					$('#searchNPCResult').html(data);
@@ -32,7 +32,7 @@
 		$("#button2").click(function() {
 
 			$.ajax({
-				url: 'npcSearch.php',
+				url: 'npcQuery.php',
 				data: {race: $( "#searchNPCRace" ).val()},
 				success: function(data){
 					$('#searchNPCResult2').html(data);

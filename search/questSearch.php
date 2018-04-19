@@ -15,7 +15,7 @@
 		$("#button1").click(function() {
 
 			$.ajax({
-				url: 'questSearch.php',
+				url: 'questQuery.php',
 				data: {title: $( "#searchQuestTitle" ).val()},
 				success: function(data){
 					$('#searchQuestResult').html(data);
@@ -32,7 +32,7 @@
 		$("#button2").click(function() {
 
 			$.ajax({
-				url: 'questSearch.php',
+				url: 'questQuery.php',
 				data: {difficulty: $( "#searchQuestDifficulty" ).val(), gt: $( "#gt" ).prop("checked"), lt: $( "#lt" ).prop("checked")},
 				success: function(data){
 					$('#searchQuestResult2').html(data);

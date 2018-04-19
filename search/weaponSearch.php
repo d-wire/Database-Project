@@ -15,7 +15,7 @@
 		$("#button1").click(function() {
 
 			$.ajax({
-				url: 'weaponSearch.php',
+				url: 'weaponQuery.php',
 				data: {weapon: $( "#searchWeaponInput" ).val()},
 				success: function(data){
 					$('#searchWeaponResult').html(data);
@@ -32,7 +32,7 @@
 		$("#button2").click(function() {
 
 			$.ajax({
-				url: 'weaponSearch.php',
+				url: 'weaponQuery.php',
 				data: {damage: $( "#searchWeaponDamage" ).val(), gt: $( "#gt" ).prop("checked"), lt: $( "#lt" ).prop("checked")},
 				success: function(data){
 					$('#searchWeaponResult2').html(data);
@@ -49,7 +49,7 @@
 		$("#button3").click(function() {
 
 			$.ajax({
-				url: 'weaponSearch.php',
+				url: 'weaponQuery.php',
 				data: {value: $( "#searchWeaponValue" ).val(), gt2: $( "#gt2" ).prop("checked"), lt2: $( "#lt2" ).prop("checked")},
 				success: function(data){
 					$('#searchWeaponResult3').html(data);
@@ -66,7 +66,7 @@
 		$("#button4").click(function() {
 
 			$.ajax({
-				url: 'weaponSearch.php',
+				url: 'weaponQuery.php',
 				data: {weight: $( "#searchWeaponWeight" ).val(), gt3: $( "#gt3" ).prop("checked"), lt3: $( "#lt3" ).prop("checked")},
 				success: function(data){
 					$('#searchWeaponResult4').html(data);
