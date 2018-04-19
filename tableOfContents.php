@@ -19,12 +19,12 @@
             <nav id="spy">
                 <ul class="sidebar-nav nav">
                   <li class="sidebar-brand">
-                      <a href="tableOfContents.html" data-scroll>
+                      <a href="tableOfContents.php" data-scroll>
                           <span class="fa fa-home solo">Home</span>
                       </a>
                   </li>
                     <li class="sidebar-brand">
-                        <a href="tableInsertForm.html">
+                        <a href="insert/tableInsertForm.php">
                           <span class="fa fa-home solo">Insert</span>
                         </a>
                     </li>
