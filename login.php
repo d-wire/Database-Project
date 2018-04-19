@@ -49,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
           <?php
 		if(mysqli_connect_errno())
 		{
-        	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        	echo "<span class='connected' style='color: red;'>Failed to connect to MySQL: " . mysqli_connect_error() . "</span>";
 		} else echo "<span class='connected'>Connected</span>";
 	?>
 
