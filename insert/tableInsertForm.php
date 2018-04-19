@@ -1,3 +1,21 @@
+
+<?php
+// Initialize the session
+session_start();
+ 
+// If session variable is not set it will redirect to login page
+if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
+  header("location: ../login.php");
+  exit;
+}
+if($_SESSION['staff'] != 1) {
+	header("location: ../tableOfContents.php");
+	exit;
+}
+
+?>
+
+
 <html>
   <head>
     <script src="js/jquery-1.6.2.min.js" type="text/javascript"></script>
@@ -21,6 +39,7 @@
                     <span class="fa fa-home solo">Home</span>
                 </a>
             </li>
+	<?php if($_SESSION['staff'] == 1): ?>
               <li class="sidebar-brand">
                   <a href="tableInsertForm.php">
                     <span class="fa fa-home solo">Insert</span>
@@ -36,8 +55,9 @@
                       <span class="fa fa-home solo">Delete</span>
                   </a>
               </li>
-              <li class="sidebar-brand">
-                  <a href="logout.php" data-scroll>
+         <?php endif; ?>
+		<li class="sidebar-brand">
+                  <a href="../logout.php" data-scroll>
                       <span class="fa fa-home solo">Logout</span>
                   </a>
               </li>

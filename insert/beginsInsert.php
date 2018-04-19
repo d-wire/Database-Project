@@ -1,5 +1,5 @@
 <?php
- require "search/dbutil.php";
+ require "../search/dbutil.php";
  $db = DbUtil::loginConnection();
 
  $stmt = $db->stmt_init();
