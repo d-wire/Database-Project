@@ -1,219 +1,143 @@
-<?php
-	require "dbutil.php";
-	$db = DbUtil::loginConnection();
+<!DOCTYPE html>
 
-	$stmt = $db->stmt_init();
+<html>
+<head>
+    <script src="js/jquery-1.6.2.min.js" type="text/javascript"></script>
+	<script src="js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/jsbootstrap.min.js"></script>
+ 	<link rel="icon" href="SkyrimLogo.png">
+	<title>Skyrim Weapon Search</title>
+	<button class="btn btn-info" type=button onclick="location.href = 'http://plato.cs.virginia.edu/~ljd3za/skyrim/tableOfContents.html';">Home</button>
+	<button class="btn btn-danger" type=button onclick="location.href = 'http://plato.cs.virginia.edu/~ljd3za/skyrim/logout.php'">Logout</button>
+	<script>
+	$(document).ready(function() {
+		$("#button1").click(function() {
 
-	if($_GET['weapon'] != '') {
-	if($stmt->prepare("select * from skyrim_Weapons where name like ?") or die(mysqli_error($db))) {
-		$searchString = '%' . $_GET['weapon'] . '%';
-		$stmt->bind_param(s, $searchString);
-		$stmt->execute();
-		$stmt->bind_result($itemID, $name, $damage, $value, $weight);
+			$.ajax({
+				url: 'weaponSearch.php',
+				data: {weapon: $( "#searchWeaponInput" ).val()},
+				success: function(data){
+					$('#searchWeaponResult').html(data);
 
-		echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
-		while($stmt->fetch()) {
-			echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+				}
+			});
+		});
 
-		$stmt->close();
-	}
-	}
+	});
+	</script>
 
-	if($_GET['damage'] != '') {
-		if($_GET['gt'] === "true" && $_GET['lt'] === "true") {
-			if($stmt->prepare("select * from skyrim_Weapons") or die(mysqli_error($db))) {
-			$searchString = $_GET['damage'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+	<script>
+	$(document).ready(function() {
+		$("#button2").click(function() {
 
-		$stmt->close();
-		}
-		}
-		else if($_GET['gt'] === "true") {
-		if($stmt->prepare("select * from skyrim_Weapons where damage >= ?") or die(mysqli_error($db))) {
-			$searchString = $_GET['damage'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+			$.ajax({
+				url: 'weaponSearch.php',
+				data: {damage: $( "#searchWeaponDamage" ).val(), gt: $( "#gt" ).prop("checked"), lt: $( "#lt" ).prop("checked")},
+				success: function(data){
+					$('#searchWeaponResult2').html(data);
 
-		$stmt->close();
-		}
-		}
-		else if($_GET['lt'] === "true") {
-			if($stmt->prepare("select * from skyrim_Weapons where damage <= ?") or die(mysqli_error($db))) {
-			$searchString = $_GET['damage'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+				}
+			});
+		});
 
-		$stmt->close();
-		}
+	});
+	</script>
 
-		}
-		else {
-		if($stmt->prepare("select * from skyrim_Weapons where damage = ?") or die(mysqli_error($db))) {
-			$searchString = $_GET['damage'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+	<script>
+	$(document).ready(function() {
+		$("#button3").click(function() {
 
-		$stmt->close();
-		}
-	}
-}
+			$.ajax({
+				url: 'weaponSearch.php',
+				data: {value: $( "#searchWeaponValue" ).val(), gt2: $( "#gt2" ).prop("checked"), lt2: $( "#lt2" ).prop("checked")},
+				success: function(data){
+					$('#searchWeaponResult3').html(data);
 
-	if($_GET['value'] != '') {
-		if($_GET['gt2'] === "true" && $_GET['lt2'] === "true") {
-			if($stmt->prepare("select * from skyrim_Weapons") or die(mysqli_error($db))) {
-			$searchString = $_GET['value'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+				}
+			});
+		});
 
-		$stmt->close();
-		}
-		}
-		else if($_GET['gt2'] === "true") {
-		if($stmt->prepare("select * from skyrim_Weapons where value >= ?") or die(mysqli_error($db))) {
-			$searchString = $_GET['value'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+	});
+	</script>
 
-		$stmt->close();
-		}
-		}
-		else if($_GET['lt2'] === "true") {
-			if($stmt->prepare("select * from skyrim_Weapons where value <= ?") or die(mysqli_error($db))) {
-			$searchString = $_GET['value'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+	<script>
+	$(document).ready(function() {
+		$("#button4").click(function() {
 
-		$stmt->close();
-		}
+			$.ajax({
+				url: 'weaponSearch.php',
+				data: {weight: $( "#searchWeaponWeight" ).val(), gt3: $( "#gt3" ).prop("checked"), lt3: $( "#lt3" ).prop("checked")},
+				success: function(data){
+					$('#searchWeaponResult4').html(data);
 
-		}
-		else {
-		if($stmt->prepare("select * from skyrim_Weapons where value = ?") or die(mysqli_error($db))) {
-			$searchString = $_GET['value'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+				}
+			});
+		});
 
-		$stmt->close();
-		}
-	}
-}
+	});
+	</script>
 
+</head>
+<body>
+	<h3 style="position: relative; left: 50px;">Search by Weapon Name</h3>
+  <div class="container">
+		<div class="row">
+			<div class="form-group">
+	       <input class="form-control" style="width: 20%;" id="searchWeaponInput" type="search" size="30" placeholder="Weapon Name"/>
+	       <button id="button1" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+  <h4 style="position: relative; left: 25px;">Weapon Name Search Result</h4>
+	<div id="searchWeaponResult"></div>
+</br>
+	</br>
 
-	if($_GET['weight'] != '') {
-		if($_GET['gt3'] === "true" && $_GET['lt3'] === "true") {
-			if($stmt->prepare("select * from skyrim_Weapons") or die(mysqli_error($db))) {
-			$searchString = $_GET['weight'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+	<h3 style="position: relative; left: 50px;">Search by Weapon Damage</h3>
+  <div class="container">
+    <div class="row">
+      <div class="form-group">
+         <input class="form-control" style="width: 20%;" id="searchWeaponDamage" type="search" size="30" placeholder="Weapon Damage"/>
+         <button id="button2" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+	<span style="position: relative; left: 50px;"><input type="checkbox" class="form-check-input" id="gt"/>Greater Than</span>
+	<span style="position: relative; left: 60px;"><input type="checkbox" class="form-check-input" id="lt"/>Less Than</span>
+  <h4 style="position: relative; left: 25px;">Weapon Damage Search Result</h4>
+	<div id="searchWeaponResult2"></div>
+	<br/><br/>
 
-		$stmt->close();
-		}
-		}
-		else if($_GET['gt3'] === "true") {
-		if($stmt->prepare("select * from skyrim_Weapons where weight >= ?") or die(mysqli_error($db))) {
-			$searchString = $_GET['weight'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+	<h3 style="position: relative; left: 50px;">Search by Weapon Value</h3>
+  <div class="container">
+    <div class="row">
+      <div class="form-group">
+         <input class="form-control" style="width: 20%;" id="searchWeaponValue" type="search" size="30" placeholder="Weapon Value"/>
+         <button id="button3" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+	<span style="position: relative; left: 50px;"><input type="checkbox" class="form-check-input" id="gt2"/>Greater Than</span>
+	<span style="position: relative; left: 60px;"><input type="checkbox" class="form-check-input" id="lt2"/>Less Than</span>
+  <h4 style="position: relative; left: 25px;">Weapon Value Search Result</h4>
+	<div id="searchWeaponResult3"></div>
+	<br/><br/>
 
-		$stmt->close();
-		}
-		}
-		else if($_GET['lt3'] === "true") {
-			if($stmt->prepare("select * from skyrim_Weapons where weight <= ?") or die(mysqli_error($db))) {
-			$searchString = $_GET['weight'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+	<h3 style="position: relative; left: 50px;">Search by Weapon Weight</h3>
+  <div class="container">
+    <div class="row">
+      <div class="form-group">
+         <input class="form-control" style="width: 20%;" id="searchWeaponWeight" type="search" size="30" placeholder="Weapon Weight"/>
+         <button id="button4" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+	<span style="position: relative; left: 50px;"><input type="checkbox" class="form-check-input" id="gt3"/>Greater Than</span>
+	<span style="position: relative; left: 60px;"><input type="checkbox" class="form-check-input" id="lt3"/>Less Than</span>
+  <h4 style="position: relative; left: 25px;">Weapon Weight Search Result</h4>
+	<div id="searchWeaponResult4"></div>
+	<br/><br/>
 
-		$stmt->close();
-		}
-
-		}
-		else {
-		if($stmt->prepare("select * from skyrim_Weapons where weight = ?") or die(mysqli_error($db))) {
-			$searchString = $_GET['weight'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
-
-		$stmt->close();
-		}
-	}
-}
-	$db->close();
-
-
-?>
+</body>
+</html>

@@ -1,155 +1,109 @@
-<?php
-	require "dbutil.php";
-	$db = DbUtil::loginConnection();
+<!DOCTYPE html>
 
-	$stmt = $db->stmt_init();
+<html>
+<head>
+    <script src="js/jquery-1.6.2.min.js" type="text/javascript"></script>
+	<script src="js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/jsbootstrap.min.js"></script>
+ 	<link rel="icon" href="SkyrimLogo.png">
+	<title>Skyrim Loot Search</title>
+	<button class="btn btn-info" type=button onclick="location.href = 'http://plato.cs.virginia.edu/~ljd3za/skyrim/tableOfContents.html';">Home</button>
+	<button class="btn btn-danger" type=button onclick="location.href = 'http://plato.cs.virginia.edu/~ljd3za/skyrim/logout.php'">Logout</button>
+	<script>
+	$(document).ready(function() {
+		$("#button1").click(function() {
 
-	if($_GET['name'] != '') {
-		if($stmt->prepare("select * from skyrim_Loot where name like ?") or die(mysqli_error($db))) {
-			$searchString = '%' . $_GET['name'] . '%';
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
-			}
-			echo "</table>";
+			$.ajax({
+				url: 'lootSearch.php',
+				data: {name: $( "#searchLootInput" ).val()},
+				success: function(data){
+					$('#searchLootResult').html(data);
 
-			$stmt->close();
-		}
-	}
-
-
-	if($_GET['value'] != '') {
-		if($_GET['gt'] === "true" && $_GET['lt'] === "true") {
-			if($stmt->prepare("select * from skyrim_Loot") or die(mysqli_error($db))) {
-				$searchString = $_GET['value'];
-				$stmt->bind_param(s, $searchString);
-				$stmt->execute();
-				$stmt->bind_result($itemID, $name, $value, $weight);
-				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
-				while($stmt->fetch()) {
-					echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
 				}
-				echo "</table>";
+			});
+		});
 
-				$stmt->close();
-			}
+	});
+	</script>
 
-		} else if($_GET['gt'] === "true") {
-			if($stmt->prepare("select * from skyrim_Loot where value >= ?") or die(mysqli_error($db))) {
-				$searchString = $_GET['value'];
-				$stmt->bind_param(s, $searchString);
-				$stmt->execute();
-				$stmt->bind_result($itemID, $name, $value, $weight);
-				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
-				while($stmt->fetch()) {
-					echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
+	<script>
+	$(document).ready(function() {
+		$("#button2").click(function() {
+
+			$.ajax({
+				url: 'lootSearch.php',
+				data: {value: $( "#searchLootValue" ).val(), gt: $( "#gt" ).prop("checked"), lt: $( "#lt" ).prop("checked")},
+				success: function(data){
+					$('#searchLootResult2').html(data);
+
 				}
-				echo "</table>";
+			});
+		});
 
-				$stmt->close();
-			}
+	});
+	</script>
 
-		} else if($_GET['lt'] === "true") {
-			if($stmt->prepare("select * from skyrim_Loot where value <= ?") or die(mysqli_error($db))) {
-			$searchString = $_GET['value'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-			echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+	<script>
+	$(document).ready(function() {
+		$("#button3").click(function() {
 
-		$stmt->close();
-		}
+			$.ajax({
+				url: 'lootSearch.php',
+				data: {weight: $( "#searchLootWeight" ).val(), gt2: $( "#gt2" ).prop("checked"), lt2: $( "#lt2" ).prop("checked")},
+				success: function(data){
+					$('#searchLootResult3').html(data);
 
-		}
-		else {
-		if($stmt->prepare("select * from skyrim_Loot where value = ?") or die(mysqli_error($db))) {
-			$searchString = $_GET['value'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+				}
+			});
+		});
 
-		$stmt->close();
-		}
-	}
-}
+	});
+	</script>
+</head>
+<body>
+	<h3 style="position: relative; left: 50px;">Search by Loot Name</h3>
+  <div class="container">
+		<div class="row">
+			<div class="form-group">
+	       <input class="form-control" style="width: 20%;" id="searchLootInput" type="search" size="30" placeholder="Loot Name"/>
+	       <button id="button1" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+  <h4 style="position: relative; left: 25px;">Loot Name Search Result</h4>
+	<div id="searchLootResult"></div>
+	</br>
 
+	<h3 style="position: relative; left: 50px;">Search by Loot Value</h3>
+  <div class="container">
+		<div class="row">
+			<div class="form-group">
+	       <input class="form-control" style="width: 20%;" id="searchLootValue" type="search" size="30" placeholder="Loot Value"/>
+	       <button id="button2" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+	<span style="position: relative; left: 50px;"><input type="checkbox" id="gt"/>Greater Than</span>
+	<span style="position: relative; left: 60px;"><input type="checkbox" id="lt"/>Less Than</span>
+  <h4 style="position: relative; left: 25px;">Loot Value Search Result</h4>
+	<div id="searchLootResult2"></div>
+	<br/><br/>
 
-	if($_GET['weight'] != '') {
-		if($_GET['gt2'] === "true" && $_GET['lt2'] === "true") {
-			if($stmt->prepare("select * from skyrim_Loot") or die(mysqli_error($db))) {
-			$searchString = $_GET['weight'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-			echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
+	<h3 style="position: relative; left: 50px;">Search by Loot Weight</h3>
+  <div class="container">
+		<div class="row">
+			<div class="form-group">
+	       <input class="form-control" style="width: 20%;" id="searchLootWeight" type="search" size="30" placeholder="Loot Weight"/>
+	       <button id="button3" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+	<span style="position: relative; left: 50px;"><input type="checkbox" class="form-check-input" id="gt2"/>Greater Than</span>
+	<span style="position: relative; left: 60px;"><input type="checkbox" class="form-check-input" id="lt2"/>Less Than</span>
+  <h4 style="position: relative; left: 25px;">Loot Weight Search Result</h4>
+	<div id="searchLootResult3"></div>
+	<br/><br/>
 
-		$stmt->close();
-		}
-		}
-		else if($_GET['gt2'] === "true") {
-		if($stmt->prepare("select * from skyrim_Loot where weight >= ?") or die(mysqli_error($db))) {
-			$searchString = $_GET['weight'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-			echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
-
-		$stmt->close();
-		}
-		}
-		else if($_GET['lt2'] === "true") {
-			if($stmt->prepare("select * from skyrim_Loot where weight <= ?") or die(mysqli_error($db))) {
-			$searchString = $_GET['weight'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-			echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
-
-		$stmt->close();
-		}
-
-		}
-		else {
-		if($stmt->prepare("select * from skyrim_Loot where weight = ?") or die(mysqli_error($db))) {
-			$searchString = $_GET['weight'];
-			$stmt->bind_param(s, $searchString);
-			$stmt->execute();
-			$stmt->bind_result($itemID, $name, $value, $weight);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
-			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
-		}
-		echo "</table>";
-
-		$stmt->close();
-		}
-	}
-}
-	$db->close();
-
-
-?>
+</body>
+</html>

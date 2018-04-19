@@ -34,7 +34,8 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
                           <span class="fa fa-home solo">Home</span>
                       </a>
                   </li>
-                    <li class="sidebar-brand">
+		  <?php	if($_SESSION['staff'] == '1'): ?> 
+		  <li class="sidebar-brand">
                         <a href="insert/tableInsertForm.php">
                           <span class="fa fa-home solo">Insert</span>
                         </a>
@@ -49,6 +50,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
                             <span class="fa fa-home solo">Delete</span>
                         </a>
                     </li>
+		   <?php endif; ?>
                     <li class="sidebar-brand">
                         <a href="logout.php" data-scroll>
                             <span class="fa fa-home solo">Logout</span>

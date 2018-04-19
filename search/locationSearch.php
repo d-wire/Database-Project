@@ -1,43 +1,77 @@
-<?php
-	require "dbutil.php";
-	$db = DbUtil::loginConnection();
-	
-	$stmt = $db->stmt_init();
-	
-	if($_GET['region'] != '') {
-	if($stmt->prepare("select * from skyrim_Location where region like ?") or die(mysqli_error($db))) {
-		$searchString = '%' . $_GET['region'] . '%';
-		$stmt->bind_param(s, $searchString);
-		$stmt->execute();
-		$stmt->bind_result($locationID, $coordinates, $region, $title);
-		echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>LocationID</th><th>Coordinates</th><th>Region</th><th>Title</th>\n";
-		while($stmt->fetch()) {
-			echo "<tr><td>$locationID</td><td>$coordinates</td><td>$region</td><td>$title</td></tr>";
-		}
-		echo "</table>";
-	
-		$stmt->close();
-	}
-	}
+<!DOCTYPE html>
 
-	if($_GET['title'] != '') {
-	if($stmt->prepare("select * from skyrim_Location where title like ?") or die(mysqli_error($db))) {
-		$searchString = '%' . $_GET['title'] . '%';
-		$stmt->bind_param(s, $searchString);
-		$stmt->execute();
-		$stmt->bind_result($locationID, $coordinates, $region, $title);
-		echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Coordinates</th><th>Region</th><th>Title</th>\n";
-		while($stmt->fetch()) {
-			echo "<tr><td>$locationID</td><td>$coordinates</td><td>$region</td><td>$title</td></tr>";
-		}
-		echo "</table>";
-	
-		$stmt->close();
-	}
-	}
+<html>
+<head>
+    <script src="js/jquery-1.6.2.min.js" type="text/javascript"></script> 
+	<script src="js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/jsbootstrap.min.js"></script>
+ 	<link rel="icon" href="SkyrimLogo.png">
+	<title>Skyrim Location Search</title>
+	<button class="btn btn-info" type=button onclick="location.href = 'http://plato.cs.virginia.edu/~ljd3za/skyrim/tableOfContents.html';">Home</button>
+	<button class="btn btn-danger" type=button onclick="location.href = 'http://plato.cs.virginia.edu/~ljd3za/skyrim/logout.php'">Logout</button>
+	<script>
+	$(document).ready(function() {
+		$("#button1").click(function() {
 
-	
-	$db->close();
+			$.ajax({
+				url: 'locationSearch.php',
+				data: {region: $( "#searchRegionInput" ).val()},
+				success: function(data){
+					$('#searchRegionResult').html(data);
+
+				}
+			});
+		});
+
+	});
+	</script>
+
+	<script>
+	$(document).ready(function() {
+		$("#button2").click(function() {
+
+			$.ajax({
+				url: 'locationSearch.php',
+				data: {title: $( "#searchTitleInput" ).val()},
+				success: function(data){
+					$('#searchTitleResult').html(data);
+
+				}
+			});
+		});
+
+	});
+	</script>
 
 
-?>
+</head>
+<body>
+	<h3 style="position: relative; left: 50px;">Search by Location Region</h3>
+	<div class="container">
+		<div class="row">
+			<div class="form-group">
+				<input class="form-control" style="width: 20%;" id="searchRegionInput" type="search" size="30" placeholder="Location Region"/>
+				<button id="button1" class="btn btn-primary">Search</button>
+			</div>
+		</div>
+	</div>
+	<h4 style="position: relative; left: 25px;">Location Region Search Result</h4>
+	<div id="searchRegionResult"></div>
+	</br>
+
+	<h3 style="position: relative; left: 50px;">Search by Location Title</h3>
+	<div class="container">
+		<div class="row">
+			<div class="form-group">
+				<input class="form-control" style="width: 20%" id="searchTitleInput" type="search" size="30" placeholder="Location Title"/>
+				<button id="button2" class="btn btn-primary">Search</button>
+			</div>
+		</div>
+	</div>
+	<h4 style="position: relative; left: 25px;">Location Title Search Result</h4>
+	<div id="searchTitleResult"></div>
+	</br>
+
+</body>
+</html>

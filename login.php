@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = trim($_POST["username"]);
         $password = trim($_POST["password"]);
 	
-        $sql = "SELECT username, password FROM users WHERE username = '$username'";
+        $sql = "SELECT username, password, staff FROM users WHERE username = '$username'";
         if ($result = mysqli_query($con,$sql))
         {
                 if (mysqli_num_rows($result) != 1)
@@ -21,6 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         {
                                 session_start();
                                 $_SESSION['username'] = $username;
+				$_SESSION['staff'] = $row['staff'];
 				header("location: ./tableOfContents.php");
                         }
                         else
