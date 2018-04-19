@@ -6,7 +6,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/jsbootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<link rel="icon" href="search/SkyrimLogo.png">
-  <link rel="stylesheet" href="sidebar.css">
+  <link rel="stylesheet" href="../sidebar.css">
  	<title>Skyrim Table Insert</title>
   </head>
 <body>
@@ -17,7 +17,7 @@
       <nav id="spy">
           <ul class="sidebar-nav nav">
             <li class="sidebar-brand">
-                <a href="tableOfContents.php" data-scroll>
+                <a href="../tableOfContents.php" data-scroll>
                     <span class="fa fa-home solo">Home</span>
                 </a>
             </li>
@@ -46,7 +46,7 @@
   </div>
 
   <div id="page-content-wrapper">
-  <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: black; font-size: 30px;">
+  <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: black; font-size: 30px; position: fixed;">
       <i class="fa fa-bars"></i>
   </a>
 
