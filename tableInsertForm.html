@@ -1,0 +1,108 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/jsbootstrap.min.js"></script>
+  </head>
+<body>
+<div class="container">
+  <h2>Insert into Location</h2>
+  <BR>
+  <form action="locationInsert.php" method="post">
+  Coordinates: <input type="number" name="coordinates">
+  Region: <input type="text" name="region">
+  Title: <input type="text" name="title">
+  <button class="btn btn-primary" type="Submit">Submit</button>
+  </form>
+
+  <BR>
+
+  <h2>Insert into NPC</h2>
+  <form action="npcInsert.php" method="post">
+  Name: <input type="text" name="name">
+  Race: <input type="text" name="race">
+  <button class="btn btn-primary" type="Submit">Submit</button>
+  </form>
+
+  <BR>
+
+  <h2>Insert into Weapons</h2>
+  <form action="weaponInsert.php" method="post">
+  Name: <input type="test" name="name">
+  Damage: <input type="number" name="damage">
+  Value: <input type="number" name="value">
+  Weight: <input type="number" name="weight">
+  <button class="btn btn-primary" type="Submit">Submit</button>
+  </form>
+
+
+  <BR>
+
+  <h2>Insert into Creatures</h2>
+  <form action="creatureInsert.php" method="post">
+  Species: <input type="test" name="species">
+  <button class="btn btn-primary" type="Submit">Submit</button>
+  </form>
+
+
+  <BR>
+
+  <h2>Insert into Quests</h2>
+  <form action="questInsert.php" method="post">
+  Difficulty: <input type="number" name="difficulty">
+  Title: <input type="text" name="title">
+  <button class="btn btn-primary" type="Submit">Submit</button>
+  </form>
+
+
+  <BR>
+
+  <h2>Insert into Loot</h2>
+  <form action="lootInsert.php" method="post">
+  Value: <input type="test" name="value">
+  Weight: <input type="text" name="weight">
+  <button class="btn btn-primary" type="Submit">Submit</button>
+  </form>
+
+
+  <BR>
+
+  <h2>Insert into begins (Quest begins at Location)</h2>
+  <form action="beginsInsert.php" method="post">
+  Location Name: <input type="text" name="locationID">
+  Quest Name: <input type="text" name="questID">
+  <button class="btn btn-primary" type="Submit">Submit</button>
+  </form>
+
+
+  <BR>
+
+  <h2>Insert into issues (NPC issues Quest)</h2>
+  <form action="issuesInsert.php" method="post">
+  NPC Name: <input type="text" name="actorID">
+  Quest Name: <input type="text" name="questID">
+  <button class="btn btn-primary" type="Submit">Submit</button>
+  </form>
+
+
+  <BR>
+
+  <h2>Insert into located (Creature located at)</h2>
+  <form action="locatedInsert.php" method="post">
+  Creature Name: <input type="text" name="actorID">
+  Location Name: <input type="test" name="locationID">
+  <button class="btn btn-primary" type="Submit">Submit</button>
+  </form>
+
+
+  <BR>
+
+  <h2>Insert into wields (NPC wields weapon)</h2>
+  <form action="wieldsInsert.php" method="post">
+  NPC Name: <input type="text" name="actorID">
+  Weapon Name: <input type="test" name="itemID">
+  <button class="btn btn-primary" type="Submit">Submit</button>
+  </form>
+</div>
+
+</body>
+</html>
