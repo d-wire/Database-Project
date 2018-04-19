@@ -67,32 +67,32 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 
   <table class="table" style="display: block; margin-right: auto; margin-left: auto; position: relative; left: 12%; top: 50px; width: 70%;">
 	<th>
-    	<form action="search/creatureSearch.html">
+    	<form action="search/creatureSearch.php">
     		<button id="creatures" class="btn btn-primary">Creatures</button>
     	</form>
 	</th>
 	<th>
-    	<form action="search/locationSearch.html">
+    	<form action="search/locationSearch.php">
     		<button id="locations" class="btn btn-primary">Locations</button>
     	</form>
 	</th>
 	<th>
-    	<form action="search/lootSearch.html">
+    	<form action="search/lootSearch.php">
     		<button id="loot" class="btn btn-primary">Loot</button>
     	</form>
 	</th>
 	<th>
-    	<form action="search/npcSearch.html">
+    	<form action="search/npcSearch.php">
     		<button id="npcs" class="btn btn-primary">NPCs</button>
     	</form>
 	</th>
 	<th>
-    	<form action="search/questSearch.html">
+    	<form action="search/questSearch.php">
     		<button id="quests" class="btn btn-primary">Quests</button>
     	</form>
 	</th>
 	<th>
-    	<form action="search/weaponSearch.html">
+    	<form action="search/weaponSearch.php">
     		<button id="weapons" class="btn btn-primary">Weapons</button>
     	</form>
 	</th>
