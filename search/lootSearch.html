@@ -8,7 +8,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/jsbootstrap.min.js"></script>
  	<link rel="icon" href="SkyrimLogo.png">
 	<title>Skyrim Loot Search</title>
-	<button class="btn btn-info" type=button onclick="location.href = 'http://plato.cs.virginia.edu/~ljd3za/skyrim/tableOfContents.html';">Home</button>
+	<button class="btn btn-info" type=button onclick="location.href = 'http://plato.cs.virginia.edu/~ljd3za/skyrim/tableOfContents.php';">Home</button>
 	<button class="btn btn-danger" type=button onclick="location.href = 'http://plato.cs.virginia.edu/~ljd3za/skyrim/logout.php'">Logout</button>
 	<script>
 	$(document).ready(function() {
