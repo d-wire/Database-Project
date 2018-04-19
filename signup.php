@@ -35,8 +35,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "Passwords don't match";
         $password_err = "match";
     }
-
-    
+   
+    $password = password_hash($password, PASSWORD_DEFAULT);
+     
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err)){
         
