@@ -9,7 +9,7 @@ $username = $password = "";
 if($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = trim($_POST["username"]);
         $password = trim($_POST["password"]);
-
+	
         $sql = "SELECT username, password FROM users WHERE username = '$username'";
         if ($result = mysqli_query($con,$sql))
         {
@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         echo "Account does not  exist";
                 else {
                         $row = mysqli_fetch_array($result);
-                        if ($password == $row['password'])
+                        if (password_verify($password, $row['password']))
                         {
                                 session_start();
                                 $_SESSION['username'] = $username;

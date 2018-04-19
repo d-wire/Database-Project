@@ -35,13 +35,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "Passwords don't match";
         $password_err = "match";
     }
-
-    
+   
+    $password = password_hash($password, PASSWORD_DEFAULT);
+     
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+        $sql = "INSERT INTO users (username, password, staff) VALUES ('$username', '$password', false)";
          
         if($result = mysqli_query($con, $sql)){
                 header("location: login.php");
