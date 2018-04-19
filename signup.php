@@ -42,7 +42,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+        $sql = "INSERT INTO users (username, password, staff) VALUES ('$username', '$password', false)";
          
         if($result = mysqli_query($con, $sql)){
                 header("location: login.php");
