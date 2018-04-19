@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         {
                                 session_start();
                                 $_SESSION['username'] = $username;
-				header("location: ./tableOfContents.html");
+				header("location: ./tableOfContents.php");
                         }
                         else
                                 echo "Not logged in";
