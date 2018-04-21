@@ -2,6 +2,7 @@
 	require "dbutil.php";
 	$db = DbUtil::loginConnection();
 
+	session_start();
 	$stmt = $db->stmt_init();
 
 	if($_GET['weapon'] != '') {
@@ -13,7 +14,28 @@
 
 		echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
 		while($stmt->fetch()) {
-			echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
+		 if($_SESSION['staff'] == 1)
+			echo "<tr>\n
+				<td>$itemID</td>\n
+				<td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+				<td>$damage</td>\n
+				<td>$value</td>\n
+				<td>$weight</td>\n
+				<td>\n
+					<form action='./weaponSearch.php' method='post'>\n
+					<button type=submit id='weapon$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+					</form>\n
+				</td>\n
+			</tr>";
+		 else
+			echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
+
 		}
 		echo "</table>";
 
@@ -30,7 +52,28 @@
 			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
+			if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./weaponSearch.php' method='post'>\n
+                                        <button type=submit id='damage$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
+
 		}
 		echo "</table>";
 
@@ -45,8 +88,29 @@
 			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
-		}
+			if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./weaponSearch.php' method='post'>\n
+                                        <button type=submit id='damage$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
+
+			}
 		echo "</table>";
 
 		$stmt->close();
@@ -60,7 +124,28 @@
 			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
+				if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./weaponSearch.php' method='post'>\n
+                                        <button type=submit id='damage$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
+
 		}
 		echo "</table>";
 
@@ -76,7 +161,28 @@
 			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
+				if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./weaponSearch.php' method='post'>\n
+                                        <button type=submit id='damage$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
+
 		}
 		echo "</table>";
 
@@ -94,7 +200,28 @@
 			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
+				if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./weaponSearch.php' method='post'>\n
+                                        <button type=submit id='value$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
+
 		}
 		echo "</table>";
 
@@ -109,7 +236,28 @@
 			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
+				if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./weaponSearch.php' method='post'>\n
+                                        <button type=submit id='value$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
+
 		}
 		echo "</table>";
 
@@ -124,7 +272,28 @@
 			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
+				if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./weaponSearch.php' method='post'>\n
+                                        <button type=submit id='value$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
+
 		}
 		echo "</table>";
 
@@ -140,7 +309,28 @@
 			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
+	if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./weaponSearch.php' method='post'>\n
+                                        <button type=submit id='value$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
+
 		}
 		echo "</table>";
 
@@ -159,7 +349,28 @@
 			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
+				if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./weaponSearch.php' method='post'>\n
+                                        <button type=submit id='weight$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
+
 		}
 		echo "</table>";
 
@@ -174,7 +385,28 @@
 			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
+				if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./weaponSearch.php' method='post'>\n
+                                        <button type=submit id='weight$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
+
 		}
 		echo "</table>";
 
@@ -189,7 +421,28 @@
 			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
+			if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./weaponSearch.php' method='post'>\n
+                                        <button type=submit id='weight$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
+
 		}
 		echo "</table>";
 
@@ -205,7 +458,28 @@
 			$stmt->bind_result($itemID, $name, $damage, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Damage</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td><td>$damage</td><td>$value</td><td>$weight</td></tr>";
+	if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./weaponSearch.php' method='post'>\n
+                                        <button type=submit id='weight$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='weapon_result?id={$itemID}'>Who wields me?</a></td>\n
+                                <td>$damage</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
+
 		}
 		echo "</table>";
 

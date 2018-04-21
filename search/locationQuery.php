@@ -1,7 +1,7 @@
 <?php
 	require "dbutil.php";
 	$db = DbUtil::loginConnection();
-	
+	session_start();
 	$stmt = $db->stmt_init();
 	
 	if($_GET['region'] != '') {
@@ -12,7 +12,25 @@
 		$stmt->bind_result($locationID, $coordinates, $region, $title);
 		echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>LocationID</th><th>Coordinates</th><th>Region</th><th>Title</th>\n";
 		while($stmt->fetch()) {
-			echo "<tr><td>$locationID</td><td>$coordinates</td><td>$region</td><td>$title</td></tr>";
+			     if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$locationID</td>\n
+                                <td>$coordinates</td>\n
+                                <td>$region</td>\n
+                                <td>$title</td>\n
+                                <td>\n
+                                        <form action='./locationSearch.php' method='post'>\n
+                                        <button type=submit id='location$locationID' name='locationID' value='$locationID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$locationID</td>\n
+                                <td>$coordinates</td>\n
+                                <td>$region</td>\n
+                                <td>$title</td>\n
+                        </tr>";
 		}
 		echo "</table>";
 	
@@ -28,7 +46,25 @@
 		$stmt->bind_result($locationID, $coordinates, $region, $title);
 		echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Coordinates</th><th>Region</th><th>Title</th>\n";
 		while($stmt->fetch()) {
-			echo "<tr><td>$locationID</td><td>$coordinates</td><td>$region</td><td>$title</td></tr>";
+			     if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$locationID</td>\n
+                                <td>$coordinates</td>\n
+                                <td>$region</td>\n
+                                <td>$title</td>\n
+                                <td>\n
+                                        <form action='./locationSearch.php' method='post'>\n
+                                        <button type=submit id='location$locationID' name='locationID' value='$locationID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$locationID</td>\n
+                                <td>$coordinates</td>\n
+                                <td>$region</td>\n
+                                <td>$title</td>\n
+                        </tr>";
 		}
 		echo "</table>";
 	

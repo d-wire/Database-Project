@@ -9,6 +9,23 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: ../login.php");
   exit;
 }
+
+        require "dbutil.php";
+$db = DbUtil::loginConnection();
+$stmt = $db->stmt_init();
+
+if($_POST['itemID'] != '')
+{
+   $id = $_POST['itemID'];
+   if($stmt->prepare("DELETE FROM skyrim_Weapons WHERE itemID=$id") or die(mysqli_error($db))) 
+   {
+       $stmt->execute();
+       $stmt->close();
+   }
+   $_POST['itemID'] = '';
+}
+
+
 ?>
 
 <html>
