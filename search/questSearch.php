@@ -82,9 +82,9 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
                         </a>
                     </li>
                     <li class="sidebar-brand">
-                        <a href="#anch2" data-scroll>
-                            <span class="fa fa-home solo">Delete</span>
-                        </a>
+                      <a href="export.php" data-scroll>
+                          <span class="fa fa-home solo">Export</span>
+                      </a>
                     </li>
        <?php endif; ?>
                     <li class="sidebar-brand">

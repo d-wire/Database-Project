@@ -2,7 +2,7 @@
 <?php
 // Initialize the session
 session_start();
- 
+
 // If session variable is not set it will redirect to login page
 if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: ../login.php");
@@ -51,8 +51,8 @@ if($_SESSION['staff'] != 1) {
                   </a>
               </li>
               <li class="sidebar-brand">
-                  <a href="#anch2" data-scroll>
-                      <span class="fa fa-home solo">Delete</span>
+                  <a href="../search/export.php" data-scroll>
+                          <span class="fa fa-home solo">Export</span>
                   </a>
               </li>
          <?php endif; ?>
