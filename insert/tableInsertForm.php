@@ -179,6 +179,8 @@ if($_SESSION['staff'] != 1) {
       $("#wrapper").toggleClass("active");
   });
 
+  $("#menu-toggle").trigger('click');
+
   /*Scroll Spy*/
   $('body').scrollspy({ target: '#spy', offset:80});
 

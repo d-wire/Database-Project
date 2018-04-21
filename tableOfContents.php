@@ -108,6 +108,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
       $("#wrapper").toggleClass("active");
   });
 
+   $("#menu-toggle").trigger('click');
   /*Scroll Spy*/
   $('body').scrollspy({ target: '#spy', offset:80});
 
