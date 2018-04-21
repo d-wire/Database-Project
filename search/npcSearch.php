@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <?php
 // Initialize the session
 session_start();
@@ -9,6 +8,22 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: ../login.php");
   exit;
 }
+
+        require "dbutil.php";
+$db = DbUtil::loginConnection();
+$stmt = $db->stmt_init();
+
+if($_POST['actorID'] != '')
+{
+   $id = $_POST['actorID'];
+   if($stmt->prepare("DELETE FROM skyrim_NPC WHERE actorID=$id") or die(mysqli_error($db))) 
+   {
+       $stmt->execute();
+       $stmt->close();
+   }
+   $_POST['actorID'] = '';
+}
+
 ?>
 
 <html>

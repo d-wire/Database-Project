@@ -1,7 +1,7 @@
 <?php
 	require "dbutil.php";
 	$db = DbUtil::loginConnection();
-
+	session_start();
 	$stmt = $db->stmt_init();
 
 	if($_GET['name'] != '') {
@@ -12,7 +12,23 @@
 			$stmt->bind_result($actorID, $name, $race);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Race</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$actorID</td><td>$name</td><td>$race</td></tr>";
+				                 if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$actorID</td>\n
+                                <td>$name</td>\n
+                                <td>$race</td>\n
+                                <td>\n
+                                        <form action='./npcSearch.php' method='post'>\n
+                                        <button type=submit id='name$actorID' name='actorID' value='$actorID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$actorID</td>\n
+                                <td>$name</td>\n
+                                <td>$race</td>\n
+                        </tr>";
 			}
 			echo "</table>";
 
@@ -28,7 +44,23 @@
 			$stmt->bind_result($actorID, $name, $race);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Race</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$actorID</td><td>$name</td><td>$race</td></tr>";
+				                 if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$actorID</td>\n
+                                <td>$name</td>\n
+                                <td>$race</td>\n
+                                <td>\n
+                                        <form action='./npcSearch.php' method='post'>\n
+                                        <button type=submit id='race$actorID' name='actorID' value='$actorID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$actorID</td>\n
+                                <td>$name</td>\n
+                                <td>$race</td>\n
+                        </tr>";
 			}
 			echo "</table>";
 
