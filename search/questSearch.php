@@ -9,6 +9,21 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: ../login.php");
   exit;
 }
+
+        require "dbutil.php";
+$db = DbUtil::loginConnection();
+$stmt = $db->stmt_init();
+
+if($_POST['questID'] != '')
+{
+   $id = $_POST['questID'];
+   if($stmt->prepare("DELETE FROM skyrim_Quest WHERE questID=$id") or die(mysqli_error($db))) 
+   {
+       $stmt->execute();
+       $stmt->close();
+   }
+   $_POST['questID'] = '';
+}
 ?>
 
 <html>
