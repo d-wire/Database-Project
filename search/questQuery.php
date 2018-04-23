@@ -1,7 +1,7 @@
 <?php
 	require "dbutil.php";
 	$db = DbUtil::loginConnection();
-
+	session_start();
 	$stmt = $db->stmt_init();
 
 	if($_GET['title'] != '') {
@@ -12,7 +12,23 @@
 			$stmt->bind_result($questID, $difficulty, $title);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Title</th><th>Difficulty</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$questID</td><td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td><td>$difficulty</td></tr>";
+					if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$questID</td>\n
+																<td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td>\n
+																<td>$difficulty</td>\n
+                                <td>\n
+                                        <form action='./questSearch.php' method='post'>\n
+                                        <button type=submit id='title$questID' name='questID' value='$questID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$questID</td>\n
+																<td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td>\n
+																<td>$difficulty</td>\n
+                        </tr>";
 			}
 			echo "</table>";
 
@@ -29,7 +45,23 @@
 				$stmt->bind_result($questID, $difficulty, $title);
 				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Title</th><th>Difficulty</th>\n";
 				while($stmt->fetch()) {
-					echo "<tr><td>$questID</td><td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td><td>$difficulty</td></tr>";
+					                 if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$questID</td>\n
+                                <td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td>\n
+																<td>$difficulty</td>\n
+                                <td>\n
+                                        <form action='./questSearch.php' method='post'>\n
+                                        <button type=submit id='difficulty$questID' name='questID' value='$questID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$questID</td>\n
+																<td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td>\n
+																<td>$difficulty</td>\n
+                        </tr>";
 				}
 				echo "</table>";
 
@@ -43,7 +75,23 @@
 				$stmt->bind_result($questID, $difficulty, $title);
 				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Title</th><th>Difficulty</th>\n";
 				while($stmt->fetch()) {
-					echo "<tr><td>$questID</td><td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td><td>$difficulty</td></tr>";
+					                 if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$questID</td>\n
+																<td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td>\n
+																<td>$difficulty</td>\n
+                                <td>\n
+                                        <form action='./questSearch.php' method='post'>\n
+                                        <button type=submit id='difficulty$questID' name='questID' value='$questID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$questID</td>\n
+																<td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td>\n
+																<td>$difficulty</td>\n
+                        </tr>";
 				}
 				echo "</table>";
 
@@ -57,7 +105,23 @@
 				$stmt->bind_result($questID, $difficulty, $title);
 				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Title</th><th>Difficulty</th>\n";
 				while($stmt->fetch()) {
-					echo "<tr><td>$questID</td><td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td><td>$difficulty</td></tr>";
+					                 if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$questID</td>\n
+																<td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td>\n
+																<td>$difficulty</td>\n
+                                <td>\n
+                                        <form action='./questSearch.php' method='post'>\n
+                                        <button type=submit id='difficulty$questID' name='questID' value='$questID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$questID</td>\n
+																<td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td>\n
+																<td>$difficulty</td>\n
+                        </tr>";
 				}
 				echo "</table>";
 
@@ -72,7 +136,23 @@
 				$stmt->bind_result($questID, $difficulty, $title);
 				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Title</th><th>Difficulty</th>\n";
 				while($stmt->fetch()) {
-					echo "<tr><td>$questID</td><td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td><td>$difficulty</td></tr>";
+					                 if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$questID</td>\n
+																<td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td>\n
+																<td>$difficulty</td>\n
+                                <td>\n
+                                        <form action='./questSearch.php' method='post'>\n
+                                        <button type=submit id='difficulty$questID' name='questID' value='$questID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$questID</td>\n
+																<td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td>\n
+																<td>$difficulty</td>\n
+                        </tr>";
 				}
 				echo "</table>";
 

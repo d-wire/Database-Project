@@ -1,7 +1,7 @@
 <?php
 	require "dbutil.php";
 	$db = DbUtil::loginConnection();
-
+	session_start();
 	$stmt = $db->stmt_init();
 
 	if($_GET['name'] != '') {
@@ -12,7 +12,25 @@
 			$stmt->bind_result($itemID, $name, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
+			if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./lootSearch.php' method='post'>\n
+                                        <button type=submit id=' name$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
 			}
 			echo "</table>";
 
@@ -30,8 +48,26 @@
 				$stmt->bind_result($itemID, $name, $value, $weight);
 				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
 				while($stmt->fetch()) {
-					echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
-				}
+					                 if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./lootSearch.php' method='post'>\n
+                                        <button type=submit id=' value$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";	
+			}
 				echo "</table>";
 
 				$stmt->close();
@@ -45,7 +81,25 @@
 				$stmt->bind_result($itemID, $name, $value, $weight);
 				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
 				while($stmt->fetch()) {
-					echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
+					                 if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./lootSearch.php' method='post'>\n
+                                        <button type=submit id=' value$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
 				}
 				echo "</table>";
 
@@ -60,7 +114,25 @@
 			$stmt->bind_result($itemID, $name, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-			echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
+				                 if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./lootSearch.php' method='post'>\n
+                                        <button type=submit id=' value$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
 		}
 		echo "</table>";
 
@@ -76,7 +148,25 @@
 			$stmt->bind_result($itemID, $name, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
+				                 if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./lootSearch.php' method='post'>\n
+                                        <button type=submit id=' value$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
 		}
 		echo "</table>";
 
@@ -95,7 +185,25 @@
 			$stmt->bind_result($itemID, $name, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-			echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
+				                 if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./lootSearch.php' method='post'>\n
+                                        <button type=submit id=' weight$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
 		}
 		echo "</table>";
 
@@ -110,7 +218,25 @@
 			$stmt->bind_result($itemID, $name, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-			echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
+				                 if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./lootSearch.php' method='post'>\n
+                                        <button type=submit id=' weight$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";			
 		}
 		echo "</table>";
 
@@ -125,7 +251,25 @@
 			$stmt->bind_result($itemID, $name, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-			echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
+				                 if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./lootSearch.php' method='post'>\n
+                                        <button type=submit id=' weight$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
 		}
 		echo "</table>";
 
@@ -141,7 +285,25 @@
 			$stmt->bind_result($itemID, $name, $value, $weight);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$itemID</td><td>$name</td><td>$value</td><td>$weight</td></tr>";
+				                 if($_SESSION['staff'] == 1)
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                                <td>\n
+                                        <form action='./lootSearch.php' method='post'>\n
+                                        <button type=submit id=' weight$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
+                                        </form>\n
+                                </td>\n
+                        </tr>";
+                 else
+                        echo "<tr>\n
+                                <td>$itemID</td>\n
+                                <td>$name</td>\n
+                                <td>$value</td>\n
+                                <td>$weight</td>\n
+                        </tr>";
 		}
 		echo "</table>";
 
