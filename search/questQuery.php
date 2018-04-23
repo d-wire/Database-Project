@@ -10,9 +10,9 @@
 			$stmt->bind_param(s, $searchString);
 			$stmt->execute();
 			$stmt->bind_result($questID, $difficulty, $title);
-			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Difficulty</th><th>Title</th>\n";
+			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Title</th><th>Difficulty</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$questID</td><td>$difficulty</td><td>$title</td></tr>";
+				echo "<tr><td>$questID</td><td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td><td>$difficulty</td></tr>";
 			}
 			echo "</table>";
 
@@ -27,9 +27,9 @@
 				$stmt->bind_param(s, $searchString);
 				$stmt->execute();
 				$stmt->bind_result($questID, $difficulty, $title);
-				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Difficulty</th><th>Title</th>\n";
+				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Title</th><th>Difficulty</th>\n";
 				while($stmt->fetch()) {
-					echo "<tr><td>$questID</td><td>$difficulty</td><td>$title</td></tr>";
+					echo "<tr><td>$questID</td><td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td><td>$difficulty</td></tr>";
 				}
 				echo "</table>";
 
@@ -41,9 +41,9 @@
 				$stmt->bind_param(s, $searchString);
 				$stmt->execute();
 				$stmt->bind_result($questID, $difficulty, $title);
-				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Difficulty</th><th>Title</th>\n";
+				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Title</th><th>Difficulty</th>\n";
 				while($stmt->fetch()) {
-					echo "<tr><td>$questID</td><td>$difficulty</td><td>$title</td></tr>";
+					echo "<tr><td>$questID</td><td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td><td>$difficulty</td></tr>";
 				}
 				echo "</table>";
 
@@ -55,9 +55,9 @@
 				$stmt->bind_param(s, $searchString);
 				$stmt->execute();
 				$stmt->bind_result($questID, $difficulty, $title);
-				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Difficulty</th><th>Title</th>\n";
+				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Title</th><th>Difficulty</th>\n";
 				while($stmt->fetch()) {
-					echo "<tr><td>$questID</td><td>$difficulty</td><td>$title</td></tr>";
+					echo "<tr><td>$questID</td><td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td><td>$difficulty</td></tr>";
 				}
 				echo "</table>";
 
@@ -70,9 +70,9 @@
 				$stmt->bind_param(s, $searchString);
 				$stmt->execute();
 				$stmt->bind_result($questID, $difficulty, $title);
-				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Difficulty</th><th>Title</th>\n";
+				echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Title</th><th>Difficulty</th>\n";
 				while($stmt->fetch()) {
-					echo "<tr><td>$questID</td><td>$difficulty</td><td>$title</td></tr>";
+					echo "<tr><td>$questID</td><td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td><td>$difficulty</td></tr>";
 				}
 				echo "</table>";
 

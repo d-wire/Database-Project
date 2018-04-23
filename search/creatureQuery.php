@@ -12,7 +12,7 @@
 			$stmt->bind_result($actorID, $species);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Species</th>\n";
 			while($stmt->fetch()) {
-				echo "<tr><td>$actorID</td><td>$species</td></tr>";
+				echo "<tr><td>$actorID</td><td>$species <a class='btn btn-primary itemBtn pull-right' href='creature_result?id={$actorID}'>Where Am I?</a></td>\n</tr>";
 			}
 			echo "</table>";
 

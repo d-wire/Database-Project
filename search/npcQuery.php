@@ -9,13 +9,13 @@
 			$searchString = '%' . $_GET['name'] . '%';
 			$stmt->bind_param(s, $searchString);
 			$stmt->execute();
-			$stmt->bind_result($actorID, $name, $race);
+			$stmt->bind_result($actorID, $name, $race, $bag);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Race</th>\n";
 			while($stmt->fetch()) {
 				                 if($_SESSION['staff'] == 1)
                         echo "<tr>\n
                                 <td>$actorID</td>\n
-                                <td>$name</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='npc_result?id={$actorID}'>What Quest Do I Issue?</a></td>\n
                                 <td>$race</td>\n
                                 <td>\n
                                         <form action='./npcSearch.php' method='post'>\n
@@ -26,7 +26,7 @@
                  else
                         echo "<tr>\n
                                 <td>$actorID</td>\n
-                                <td>$name</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='npc_result?id={$actorID}'>What Quest Do I Issue?</a></td>\n
                                 <td>$race</td>\n
                         </tr>";
 			}
@@ -41,13 +41,13 @@
 			$searchString = '%' . $_GET['race'] . '%';
 			$stmt->bind_param(s, $searchString);
 			$stmt->execute();
-			$stmt->bind_result($actorID, $name, $race);
+			$stmt->bind_result($actorID, $name, $race, $bag);
 			echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Race</th>\n";
 			while($stmt->fetch()) {
 				                 if($_SESSION['staff'] == 1)
                         echo "<tr>\n
                                 <td>$actorID</td>\n
-                                <td>$name</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='npc_result?id={$actorID}'>What Quest Do I Issue?</a></td>\n
                                 <td>$race</td>\n
                                 <td>\n
                                         <form action='./npcSearch.php' method='post'>\n
@@ -58,7 +58,7 @@
                  else
                         echo "<tr>\n
                                 <td>$actorID</td>\n
-                                <td>$name</td>\n
+                                <td>$name <a class='btn btn-primary itemBtn pull-right' href='npc_result?id={$actorID}'>What Quest Do I Issue?</a></td>\n
                                 <td>$race</td>\n
                         </tr>";
 			}
