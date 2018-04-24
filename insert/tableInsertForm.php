@@ -88,7 +88,7 @@ if($_SESSION['staff'] != 1) {
 
   <h2>Insert into Weapons</h2>
   <form action="weaponInsert.php" method="post">
-  Name: <input type="test" name="name">
+  Name: <input type="text" name="name">
   Damage: <input type="number" name="damage">
   Value: <input type="number" name="value">
   Weight: <input type="number" name="weight">
@@ -100,7 +100,7 @@ if($_SESSION['staff'] != 1) {
 
   <h2>Insert into Creatures</h2>
   <form action="creatureInsert.php" method="post">
-  Species: <input type="test" name="species">
+  Species: <input type="text" name="species">
   <button class="btn btn-primary" type="Submit">Submit</button>
   </form>
 
@@ -119,7 +119,8 @@ if($_SESSION['staff'] != 1) {
 
   <h2>Insert into Loot</h2>
   <form action="lootInsert.php" method="post">
-  Value: <input type="test" name="value">
+  Name: <input type="text" name="name">
+  Value: <input type="text" name="value">
   Weight: <input type="text" name="weight">
   <button class="btn btn-primary" type="Submit">Submit</button>
   </form>
@@ -150,7 +151,7 @@ if($_SESSION['staff'] != 1) {
   <h2>Insert into located (Creature located at)</h2>
   <form action="locatedInsert.php" method="post">
   Creature Name: <input type="text" name="actorID">
-  Location Name: <input type="test" name="locationID">
+  Location Name: <input type="text" name="locationID">
   <button class="btn btn-primary" type="Submit">Submit</button>
   </form>
 
@@ -160,7 +161,7 @@ if($_SESSION['staff'] != 1) {
   <h2>Insert into wields (NPC wields weapon)</h2>
   <form action="wieldsInsert.php" method="post">
   NPC Name: <input type="text" name="actorID">
-  Weapon Name: <input type="test" name="itemID">
+  Weapon Name: <input type="text" name="itemID">
   <button class="btn btn-primary" type="Submit">Submit</button>
   </form>
 </div>

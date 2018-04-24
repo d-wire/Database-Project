@@ -1,5 +1,5 @@
 <?php
- require "../search/dbutil.php";
+ require "search/dbutil.php";
  $db = DbUtil::loginConnection();
 
  $stmt = $db->stmt_init();
@@ -41,7 +41,7 @@
     if($stmt->prepare("insert into skyrim_begins (locationID, questID) values (?, ?)") or die(mysqli_error($db))) {
       $stmt->bind_param("ss", $location, $quest);
       $stmt->execute();
-      echo "<a class='btn btn-primary' href='tableInsertForm.html'>Back</a>";
+      echo "<a class='btn btn-primary' href='tableInsertForm.php'>Back</a>";
       echo "<h2 style='text-align: center'>Location: {$location}</h2>";
       echo "<h2 style='text-align: center'>Quest: {$quest}<h2>";
       echo "<h2 style='text-align: center'>Insterted into skyrim_begins"; // Output to user
