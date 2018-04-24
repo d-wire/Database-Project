@@ -92,11 +92,6 @@ if($_POST['questID'] != '')
                         </a>
                     </li>
                     <li class="sidebar-brand">
-                        <a href="#anch1" data-scroll>
-                            <span class="fa fa-home solo">Update</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-brand">
                       <a href="export.php" data-scroll>
                           <span class="fa fa-home solo">Export</span>
                       </a>

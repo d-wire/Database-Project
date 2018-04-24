@@ -44,6 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/jsbootstrap.min.js"></script>
 <link rel="stylesheet" href="login_style.css">
 
+<a href="signup.php" style="float: right; margin-right: 10px; font-size: 18px;">Sign Up</a>
 <div class="container">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="login_form">
           <?php

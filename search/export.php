@@ -42,11 +42,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
                         </a>
                     </li>
                     <li class="sidebar-brand">
-                        <a href="#anch1" data-scroll>
-                            <span class="fa fa-home solo">Update</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-brand">
                         <a href="export.php" data-scroll>
                             <span class="fa fa-home solo">Export</span>
                         </a>
@@ -67,6 +62,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
                    </a>
 
 <div class="container">
+   <h3>Select which table to export:</h3>
     <div class="form-group">
 	<form action="exportAction.php" method="post">
 		<select class="form-control" name="entity" style="width: 40%;">

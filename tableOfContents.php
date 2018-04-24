@@ -41,11 +41,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
                         </a>
                     </li>
                     <li class="sidebar-brand">
-                        <a href="#anch1" data-scroll>
-                            <span class="fa fa-home solo">Update</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-brand">
                       <a href="search/export.php" data-scroll>
                           <span class="fa fa-home solo">Export</span>
                       </a>
