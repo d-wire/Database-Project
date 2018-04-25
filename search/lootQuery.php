@@ -17,7 +17,7 @@
                                 if($_SESSION['staff'] == 1)
                                           echo "<tr>\n
                                                  <td>$itemID</td>\n
-                                                 <td>$name</td>\n
+                                                 <td>$name <a class='btn btn-primary itemBtn pull-right' href='item_result?id={$itemID}'>Who Drops Me?</a></td>\n
                                                  <td>$value</td>\n
                                                 <td>$weight</td>\n
                                                 <td>\n
@@ -29,7 +29,7 @@
                                 else
                                          echo "<tr>\n
                                                  <td>$itemID</td>\n
-                                                 <td>$name</td>\n
+                                                 <td>$name <a class='btn btn-primary itemBtn pull-right' href='item_result?id={$itemID}'>Who Drops Me?</a></td>\n
                                                  <td>$value</td>\n
                                                  <td>$weight</td>\n
                                          </tr>";
@@ -48,7 +48,7 @@
                 $stmt1 = $db->stmt_init();
                 $stmt2 = $db->stmt_init();
 
-                if($_GET['gt'] === "true" && $_GET['lt'] === "true") 
+                if($_GET['gt'] === "true" && $_GET['lt'] === "true")
                         $type = 2;
                 else if($_GET['gt'] === "true")
                         $type = 0;
@@ -67,7 +67,7 @@
                               if($_SESSION['staff'] == 1)
                                 echo "<tr>\n
                                        <td>$itemID</td>\n
-                                        <td>$name</td>\n
+                                        <td>$name <a class='btn btn-primary itemBtn pull-right' href='item_result?id={$itemID}'>Who Drops Me?</a></td>\n
                                          <td>$value</td>\n
                                          <td>$weight</td>\n
                                          <td>\n
@@ -79,7 +79,7 @@
                          else
                                  echo "<tr>\n
                                          <td>$itemID</td>\n
-                                         <td>$name</td>\n
+                                         <td>$name <a class='btn btn-primary itemBtn pull-right' href='item_result?id={$itemID}'>Who Drops Me?</a></td>\n
                                          <td>$value</td>\n
                                          <td>$weight</td>\n
                                        </tr>";
@@ -97,7 +97,7 @@
                 $stmt1 = $db->stmt_init();
                 $stmt2 = $db->stmt_init();
 
-                if($_GET['gt2'] === "true" && $_GET['lt2'] === "true") 
+                if($_GET['gt2'] === "true" && $_GET['lt2'] === "true")
                         $type = 2;
                 else if($_GET['gt2'] === "true")
                         $type = 0;
@@ -107,19 +107,19 @@
                 $stmt1->prepare("SET @p0='$searchString';");
                 $stmt2->prepare("SET @p1='$type';");
 
-                if($stmt->prepare("CALL `get_loot_weight`(@p0, @p1);") or die(mysqli_error($db))) 
+                if($stmt->prepare("CALL `get_loot_weight`(@p0, @p1);") or die(mysqli_error($db)))
                 {
                         $stmt1->execute();
 			$stmt2->execute();
 			$stmt->execute();
                         $stmt->bind_result($itemID, $name, $value, $weight);
                         echo "<table class='table' style='margin-right: 20px; margin-left: 20px;' border=1><th>ID</th><th>Name</th><th>Value</th><th>Weight</th>\n";
-                        while($stmt->fetch()) 
+                        while($stmt->fetch())
                         {
                             if($_SESSION['staff'] == 1)
                                 echo "<tr>\n
                                         <td>$itemID</td>\n
-                                        <td>$name</td>\n
+                                        <td>$name <a class='btn btn-primary itemBtn pull-right' href='item_result?id={$itemID}'>Who Drops Me?</a></td>\n
                                         <td>$value</td>\n
                                         <td>$weight</td>\n
                                         <td>\n
@@ -131,7 +131,7 @@
                              else
                                     echo "<tr>\n
                                             <td>$itemID</td>\n
-                                            <td>$name</td>\n
+                                            <td>$name <a class='btn btn-primary itemBtn pull-right' href='item_result?id={$itemID}'>Who Drops Me?</a></td>\n
                                             <td>$value</td>\n
                                             <td>$weight</td>\n
                                     </tr>";
@@ -140,10 +140,9 @@
 
                 $stmt->close();
                 }
-            
+
         }
         $db->close();
 
 
 ?>
-

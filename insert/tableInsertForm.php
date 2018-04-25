@@ -138,6 +138,16 @@ if($_SESSION['staff'] != 1) {
 
   <BR>
 
+    <h2>Insert into drops (Creature drops Loot)</h2>
+    <form action="dropsInsert.php" method="post">
+    Creature Species: <input type="text" name="actorID">
+    Loot Name: <input type="text" name="itemID">
+    <button class="btn btn-primary" type="Submit">Submit</button>
+    </form>
+
+
+    <BR>
+
   <h2>Insert into issues (NPC issues Quest)</h2>
   <form action="issuesInsert.php" method="post">
   NPC Name: <input type="text" name="actorID">
