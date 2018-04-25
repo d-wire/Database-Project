@@ -105,7 +105,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 
    $("#menu-toggle").trigger('click');
   /*Scroll Spy*/
-  $('body').scrollspy({ target: '#spy', offset:80});
+   $('body').scrollspy({ target: '#spy', offset:80});
 
   /*Smooth link animation*/
   $('a[href*=#]:not([href=#])').click(function() {
