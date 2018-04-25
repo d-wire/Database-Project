@@ -4,9 +4,9 @@
 	session_start();
 	$stmt = $db->stmt_init();
 
-	if($_GET['title'] != '') {
+	if($_GET['sb'] === "sbt") {
 		if($stmt->prepare("select * from skyrim_Quest where title like ?") or die(mysqli_error($db))) {
-			$searchString = '%' . $_GET['title'] . '%';
+			$searchString = '%' . $_GET['param'] . '%';
 			$stmt->bind_param(s, $searchString);
 			$stmt->execute();
 			$stmt->bind_result($questID, $difficulty, $title);
@@ -36,9 +36,9 @@
 		}
 	}
 
-	if($_GET['difficulty'] != '') {
+	if($_GET['sb'] === "sbd") {
 		$type = 3;
-                $searchString = $_GET['difficulty'];
+                $searchString = $_GET['param'];
                 $stmt1 = $db->stmt_init();
                 $stmt2 = $db->stmt_init();
 
