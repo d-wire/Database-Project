@@ -3,11 +3,11 @@
         $db = DbUtil::loginConnection();
         session_start();
         $stmt = $db->stmt_init();
-
-        if($_GET['name'] != '')
+        
+        if($_GET['sb'] === "sbn")
          {
                 if($stmt->prepare("select * from skyrim_Loot where name like ?") or die(mysqli_error($db))) {
-                        $searchString = '%' . $_GET['name'] . '%';
+                        $searchString = '%' . $_GET['param'] . '%';
                         $stmt->bind_param(s, $searchString);
                         $stmt->execute();
                         $stmt->bind_result($itemID, $name, $value, $weight);
@@ -41,10 +41,10 @@
         }
 
 
-        if($_GET['value'] != '')
+        if($_GET['sb'] === "sbv")
          {
                 $type = 3;
-                $searchString = $_GET['value'];
+                $searchString = $_GET['param'];
                 $stmt1 = $db->stmt_init();
                 $stmt2 = $db->stmt_init();
 
@@ -91,17 +91,17 @@
 
         }
 
-        if($_GET['weight'] != '') {
+        if($_GET['sb'] === "sbw") {
                 $type = 3;
-                $searchString = $_GET['weight'];
+                $searchString = $_GET['param'];
                 $stmt1 = $db->stmt_init();
                 $stmt2 = $db->stmt_init();
 
-                if($_GET['gt2'] === "true" && $_GET['lt2'] === "true") 
+                if($_GET['gt'] === "true" && $_GET['lt'] === "true") 
                         $type = 2;
-                else if($_GET['gt2'] === "true")
+                else if($_GET['gt'] === "true")
                         $type = 0;
-                else if($_GET['lt2'] === "true")
+                else if($_GET['lt'] === "true")
                         $type = 1;
 
                 $stmt1->prepare("SET @p0='$searchString';");
