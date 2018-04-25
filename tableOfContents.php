@@ -22,7 +22,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   <link rel="stylesheet" href="sidebar.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
  	<title>Skyrim Table of Contents</title>
-<body style="background-image: url('map.jpg'); background-repeat: no-repeat; background-size: cover;" width= "100%" height=auto>
+<body style="background-image: url('skyrim_bg.jpg'); background-repeat: no-repeat; background-size: cover;" width= "100%" height=auto>
 
   <div id="wrapper">
 
@@ -59,8 +59,8 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
         <div id="page-content-wrapper">
                    <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: white; font-size: 30px;">
                    </a>
-
-  <table class="table" style="display: block; margin-right: auto; margin-left: auto; position: relative; left: 12%; top: 50px; width: 70%;">
+   <h1 style="text-align: center; color: white; font-family: Bookman Old Style; font-size: 72px;">Skyrim Registry<h1>
+  <table class="table" style="margin-right: auto; margin-left: auto; position: relative; top: 50px; width: 40%;">
 	<th>
     	<form action="search/creatureSearch.php">
     		<button id="creatures" class="btn btn-primary">Creatures</button>
