@@ -20,7 +20,7 @@
                                                  <td>$name <a class='btn btn-primary itemBtn pull-right' href='item_result?id={$itemID}'>Who Drops Me?</a></td>\n
                                                  <td>$value</td>\n
                                                 <td>$weight</td>\n
-                                                <td>\n
+                                                <td style ='width:50px;'>\n
                                                  <form action='./lootSearch.php' method='post'>\n
                                                          <button type=submit id=' name$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
                                                  </form>\n
@@ -70,7 +70,7 @@
                                         <td>$name <a class='btn btn-primary itemBtn pull-right' href='item_result?id={$itemID}'>Who Drops Me?</a></td>\n
                                          <td>$value</td>\n
                                          <td>$weight</td>\n
-                                         <td>\n
+                                         <td style ='width:50px;'>\n
                                          <form action='./lootSearch.php' method='post'>\n
                                                  <button type=submit id=' value$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
                                           </form>\n
@@ -122,7 +122,7 @@
                                         <td>$name <a class='btn btn-primary itemBtn pull-right' href='item_result?id={$itemID}'>Who Drops Me?</a></td>\n
                                         <td>$value</td>\n
                                         <td>$weight</td>\n
-                                        <td>\n
+                                        <td style ='width:50px;'>\n
                                                 <form action='./lootSearch.php' method='post'>\n
                                                 <button type=submit id=' weight$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
                                                 </form>\n

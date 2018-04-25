@@ -21,7 +21,7 @@
                                 <td>$damage</td>\n
                                 <td>$value</td>\n
                                 <td>$weight</td>\n
-                                <td>\n
+                                <td style ='width:50px;'>\n
                                         <form action='./weaponSearch.php' method='post'>\n
                                         <button type=submit id='weapon$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
                                         </form>\n
@@ -74,7 +74,7 @@ th>\n";
                                 <td>$damage</td>\n
                                 <td>$value</td>\n
                                 <td>$weight</td>\n
-                                <td>\n
+                                <td style ='width:50px;'>\n
                                         <form action='./weaponSearch.php' method='post'>\n
                                         <button type=submit id='damage$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
                                         </form>\n
@@ -127,7 +127,7 @@ th>\n";
                                                 <td>$damage</td>\n
                                                 <td>$value</td>\n
                                                 <td>$weight</td>\n
-                                                <td>\n
+                                                <td style ='width:50px;'>\n
                                                         <form action='./weaponSearch.php' method='post'>\n
                                                         <button type=submit id='value$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
                                                         </form>\n
@@ -181,7 +181,7 @@ th>\n";
                                 <td>$damage</td>\n
                                 <td>$value</td>\n
                                 <td>$weight</td>\n
-                                <td>\n
+                                <td style ='width:50px;'>\n
                                         <form action='./weaponSearch.php' method='post'>\n
                                         <button type=submit id='weight$itemID' name='itemID' value='$itemID' class='btn btn-danger itemBtn'>Delete</button>
                                         </form>\n

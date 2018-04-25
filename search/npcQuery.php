@@ -18,7 +18,7 @@
                                 <td>$name <a class='btn btn-primary itemBtn pull-right' href='npc_result?id={$actorID}'>What Quest Do I Issue?</a></td>\n
                                 <td>$race</td>\n
 				<td>$bag</td>\n
-                                <td>\n
+                                <td style ='width:50px;'>\n
                                         <form action='./npcSearch.php' method='post'>\n
                                         <button type=submit id='name$actorID' name='actorID' value='$actorID' class='btn btn-danger itemBtn'>Delete</button>
                                         </form>\n
@@ -52,7 +52,7 @@
                                 <td>$name <a class='btn btn-primary itemBtn pull-right' href='npc_result?id={$actorID}'>What Quest Do I Issue?</a></td>\n
                                 <td>$race</td>\n
 				<td>$bag</td>\n
-                                <td>\n
+                                <td style ='width:50px;'>\n
                                         <form action='./npcSearch.php' method='post'>\n
                                         <button type=submit id='race$actorID' name='actorID' value='$actorID' class='btn btn-danger itemBtn'>Delete</button>
                                         </form>\n
