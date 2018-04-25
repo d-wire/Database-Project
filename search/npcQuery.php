@@ -3,10 +3,10 @@
 	$db = DbUtil::loginConnection();
 	session_start();
 	$stmt = $db->stmt_init();
-
-	if($_GET['name'] != '') {
+	
+	if($_GET['sb'] === "sbn") {
 		if($stmt->prepare("select * from skyrim_NPC where name like ?") or die(mysqli_error($db))) {
-			$searchString = '%' . $_GET['name'] . '%';
+			$searchString = '%' . $_GET['param'] . '%';
 			$stmt->bind_param(s, $searchString);
 			$stmt->execute();
 			$stmt->bind_result($actorID, $name, $race, $bag);
@@ -38,9 +38,9 @@
 		}
 	}
 
-	if($_GET['race'] != '') {
+	if($_GET['sb'] === "sbr") {
 		if($stmt->prepare("select * from skyrim_NPC where race like ?") or die(mysqli_error($db))) {
-			$searchString = '%' . $_GET['race'] . '%';
+			$searchString = '%' . $_GET['param'] . '%';
 			$stmt->bind_param(s, $searchString);
 			$stmt->execute();
 			$stmt->bind_result($actorID, $name, $race, $bag);

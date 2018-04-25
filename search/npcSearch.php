@@ -40,11 +40,11 @@ if($_POST['actorID'] != '')
 
 <script>
 	$(document).ready(function() {
-		$("#button1").click(function() {
+		$("#button").click(function() {
 
 			$.ajax({
 				url: 'npcQuery.php',
-				data: {name: $( "#searchNPCName" ).val()},
+				data: {param: $( "#searchNPC" ).val(), sb: $( "#sb" ).val()},
 				success: function(data){
 					$('#searchNPCResult').html(data);
 
@@ -54,24 +54,6 @@ if($_POST['actorID'] != '')
 
 	});
 	</script>
-
-	<script>
-	$(document).ready(function() {
-		$("#button2").click(function() {
-
-			$.ajax({
-				url: 'npcQuery.php',
-				data: {race: $( "#searchNPCRace" ).val()},
-				success: function(data){
-					$('#searchNPCResult2').html(data);
-
-				}
-			});
-		});
-
-	});
-	</script>
-
 
 </head>
 <body>
@@ -112,27 +94,22 @@ if($_POST['actorID'] != '')
                    <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: black; font-size: 30px;">
                    </a>
 <div class="container">
-  <h3 style="position: relative; left: -15px;">Search by NPC Name</h3>
+  <h3 style="position: relative; left: -15px;">Search NPCs</h3>
 		<div class="row">
 			<div class="form-group">
-	       <input class="form-control" style="width: 20%;" id="searchNPCName" type="search" size="30" placeholder="NPC Name"/>
-	       <button id="button1" class="btn btn-primary">Search</button>
+	       <input class="form-control" style="width: 20%;" id="searchNPC" type="search" size="30" placeholder=""/>
+	       <button id="button" class="btn btn-primary">Search</button>
       </div>
     </div>
-  <h4 style="position: relative; left: 25px;">NPC Name Search Result</h4>
+        Search by:
+      <select style="position: relative; left: -15px;" id="sb">
+	<option value="sbn">Name</option>
+	<option value="sbr">Race</option>
+      </select>
+  <h4 style="position: relative; left: 25px;">NPC Search Result</h4>
 	<div id="searchNPCResult"></div>
 	</br>
 
-	<h3 style="position: relative; left: -15px;">Search by NPC Race</h3>
-		<div class="row">
-			<div class="form-group">
-	       <input class="form-control" style="width: 20%;" id="searchNPCRace" type="search" size="30" placeholder="NPC Race"/>
-	       <button id="button2" class="btn btn-primary">Search</button>
-      </div>
-    </div>
-  <h4 style="position: relative; left: 25px;">NPC Race Search Result</h4>
-	<div id="searchNPCResult2"></div>
-	</br>
 </div>
 </div>
 </div>
