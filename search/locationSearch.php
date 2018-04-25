@@ -73,7 +73,7 @@ if($_POST['locationID'] != '')
                   </li>
       <?php	if($_SESSION['staff'] == '1'): ?>
       <li class="sidebar-brand">
-                        <a href="../insert/tableInsertForm.php">
+                        <a href="../insert/tLocations SearchableInsertForm.php">
                           <span class="fa fa-plus circle">Insert</span>
                         </a>
                     </li>
@@ -110,7 +110,7 @@ if($_POST['locationID'] != '')
 	<option value="sbr">Region</option>
 	<option value="sbt">Title</option>
       </select>
-	<h4 style="position: relative; left: 25px;">Locations Search Result</h4>
+	<h4 style="position: relative; left: 25px;">Location Search Result</h4>
 	<div id="searchLocationResult"></div>
 	</br>
 

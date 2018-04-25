@@ -75,7 +75,7 @@ if($_POST['itemID'] != '')
                     </li>
                     <li class="sidebar-brand">
                       <a href="export.php" data-scroll>
-                          <span class="fa fa-download solo">Export</span>
+                          <span class="fa faby Creature Species-download solo">Export</span>
                       </a>
                     </li>
        <?php endif; ?>
@@ -109,7 +109,7 @@ if($_POST['itemID'] != '')
         <span><input type="checkbox" id="gt"/>Greater Than</span>
         <span style="position: relative; left: 10px;"><input type="checkbox" id="lt"/>Less Than</span>
 
-  <h4 style="position: relative; left: 25px;">Search Result</h4>
+  <h4 style="position: relative; left: 25px;">Loot Search Result</h4>
   <div id="searchLootResult"></div>
 </br></br>
 </div>
