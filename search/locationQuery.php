@@ -4,9 +4,9 @@
 	session_start();
 	$stmt = $db->stmt_init();
 	
-	if($_GET['region'] != '') {
+	if($_GET['sb'] === "sbr") {
 	if($stmt->prepare("select * from skyrim_Location where region like ?") or die(mysqli_error($db))) {
-		$searchString = '%' . $_GET['region'] . '%';
+		$searchString = '%' . $_GET['param'] . '%';
 		$stmt->bind_param(s, $searchString);
 		$stmt->execute();
 		$stmt->bind_result($locationID, $coordinates, $region, $title);
@@ -38,9 +38,9 @@
 	}
 	}
 
-	if($_GET['title'] != '') {
+	if($_GET['sb'] === "sbt") {
 	if($stmt->prepare("select * from skyrim_Location where title like ?") or die(mysqli_error($db))) {
-		$searchString = '%' . $_GET['title'] . '%';
+		$searchString = '%' . $_GET['param'] . '%';
 		$stmt->bind_param(s, $searchString);
 		$stmt->execute();
 		$stmt->bind_result($locationID, $coordinates, $region, $title);

@@ -42,13 +42,13 @@ if($_POST['locationID'] != '')
 	<title>Skyrim Location Search</title>
 	<script>
 	$(document).ready(function() {
-		$("#button1").click(function() {
+		$("#button").click(function() {
 
 			$.ajax({
 				url: 'locationQuery.php',
-				data: {region: $( "#searchRegionInput" ).val()},
+				data: {param: $( "#searchLocation" ).val(), sb: $( "#sb" ).val()},
 				success: function(data){
-					$('#searchRegionResult').html(data);
+					$('#searchLocationResult').html(data);
 
 				}
 			});
@@ -56,24 +56,6 @@ if($_POST['locationID'] != '')
 
 	});
 	</script>
-
-	<script>
-	$(document).ready(function() {
-		$("#button2").click(function() {
-
-			$.ajax({
-				url: 'locationQuery.php',
-				data: {title: $( "#searchTitleInput" ).val()},
-				success: function(data){
-					$('#searchTitleResult').html(data);
-
-				}
-			});
-		});
-
-	});
-	</script>
-
 
 </head>
 <body>
@@ -114,27 +96,22 @@ if($_POST['locationID'] != '')
                    <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: black; font-size: 30px;">
                    </a>
 	<div class="container">
-	<h3 style="position: relative; left: -15px;">Search by Location Region</h3>
+	<h3 style="position: relative; left: -15px;">Search Locations</h3>
 		<div class="row">
 			<div class="form-group">
-				<input class="form-control" style="width: 20%;" id="searchRegionInput" type="search" size="30" placeholder="Location Region"/>
-				<button id="button1" class="btn btn-primary">Search</button>
+				<input class="form-control" style="width: 20%;" id="searchLocation" type="search" size="30" placeholder=""/>
+				<button id="button" class="btn btn-primary">Search</button>
 			</div>
 		</div>
-	<h4 style="position: relative; left: 25px;">Location Region Search Result</h4>
-	<div id="searchRegionResult"></div>
+      Search by:
+      <select style="position: relative; left: -15px;" id="sb">
+	<option value="sbr">Region</option>
+	<option value="sbt">Title</option>
+      </select>
+	<h4 style="position: relative; left: 25px;">Locations Search Result</h4>
+	<div id="searchLocationResult"></div>
 	</br>
 
-	<h3 style="position: relative; left: -15px;">Search by Location Title</h3>
-		<div class="row">
-			<div class="form-group">
-				<input class="form-control" style="width: 20%" id="searchTitleInput" type="search" size="30" placeholder="Location Title"/>
-				<button id="button2" class="btn btn-primary">Search</button>
-			</div>
-		</div>
-	<h4 style="position: relative; left: 25px;">Location Title Search Result</h4>
-	<div id="searchTitleResult"></div>
-	</br>
 </div>
 </div>
 </div>
