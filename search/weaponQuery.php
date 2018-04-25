@@ -5,9 +5,9 @@
         session_start();
         $stmt = $db->stmt_init();
 
-        if($_GET['weapon'] != '') {
+        if($_GET['sb'] === "sbn") {
         if($stmt->prepare("select * from skyrim_Weapons where name like ?") or die(mysqli_error($db))) {
-                $searchString = '%' . $_GET['weapon'] . '%';
+                $searchString = '%' . $_GET['param'] . '%';
                 $stmt->bind_param(s, $searchString);
                 $stmt->execute();
                 $stmt->bind_result($itemID, $name, $damage, $value, $weight);
@@ -43,10 +43,10 @@
         }
         }
 
-        if($_GET['damage'] != '') 
+        if($_GET['sb'] === "sbd") 
         {
                 $type = 3;
-                $searchString = $_GET['damage'];
+                $searchString = $_GET['param'];
                 $stmt1 = $db->stmt_init();
                 $stmt2 = $db->stmt_init();
 
@@ -96,18 +96,18 @@ th>\n";
                 }
         }
 
-        if($_GET['value'] != '') 
+        if($_GET['sb'] === "sbv") 
         {
                 $type = 3;
-                $searchString = $_GET['value'];
+                $searchString = $_GET['param'];
                 $stmt1 = $db->stmt_init();
                 $stmt2 = $db->stmt_init();
 
-                if($_GET['gt2'] === "true" && $_GET['lt2'] === "true") 
+                if($_GET['gt'] === "true" && $_GET['lt'] === "true") 
                         $type = 2;
-                else if($_GET['gt2'] === "true")
+                else if($_GET['gt'] === "true")
                         $type = 0;
-                else if($_GET['lt2'] === "true")
+                else if($_GET['lt'] === "true")
                         $type = 1;
 
                 $stmt1->prepare("SET @p0='$searchString';");
@@ -150,18 +150,18 @@ th>\n";
         }
 
 
-        if($_GET['weight'] != '') 
+        if($_GET['sb'] === "sbw") 
         {
                 $type = 3;
-                $searchString = $_GET['weight'];
+                $searchString = $_GET['param'];
                 $stmt1 = $db->stmt_init();
                 $stmt2 = $db->stmt_init();
 
-                if($_GET['gt3'] === "true" && $_GET['lt3'] === "true") 
+                if($_GET['gt'] === "true" && $_GET['lt'] === "true") 
                         $type = 2;
-                else if($_GET['gt3'] === "true")
+                else if($_GET['gt'] === "true")
                         $type = 0;
-                else if($_GET['lt3'] === "true")
+                else if($_GET['lt'] === "true")
                         $type = 1;
 
                 $stmt1->prepare("SET @p0='$searchString';");
