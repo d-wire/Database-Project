@@ -20,6 +20,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <link rel="stylesheet" href="../sidebar.css">
   <link rel="icon" href="SkyrimLogo.png">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
  	<title>Skyrim Entity Export</title>
 </head>
 
@@ -38,18 +39,18 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
       <?php	if($_SESSION['staff'] == '1'): ?>
       <li class="sidebar-brand">
                         <a href="../insert/tableInsertForm.php">
-                          <span class="fa fa-home solo">Insert</span>
+                          <span class="fa fa-plus circle">Insert</span>
                         </a>
                     </li>
                     <li class="sidebar-brand">
                         <a href="export.php" data-scroll>
-                            <span class="fa fa-home solo">Export</span>
+                            <span class="fa fa-download solo">Export</span>
                         </a>
                     </li>
        <?php endif; ?>
                     <li class="sidebar-brand">
                         <a href="../logout.php" data-scroll>
-                            <span class="fa fa-home solo">Logout</span>
+                            <span class="fa fa-sign-out">Logout</span>
                         </a>
                     </li>
                 </ul>
@@ -58,11 +59,10 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 
         <div id="page-content-wrapper">
                    <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: black; font-size: 30px;">
-                       <i class="fa fa-bars"></i>
                    </a>
 
 <div class="container">
-   <h3>Select which table to export:</h3>
+  <h2>Select a table to export:</h2>
     <div class="form-group">
 	<form action="exportAction.php" method="post">
 		<select class="form-control" name="entity" style="width: 40%;">
@@ -87,7 +87,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   });
 
   $("#menu-toggle").trigger('click');
-
   /*Scroll Spy*/
   $('body').scrollspy({ target: '#spy', offset:80});
 

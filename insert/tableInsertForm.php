@@ -25,6 +25,7 @@ if($_SESSION['staff'] != 1) {
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<link rel="icon" href="search/SkyrimLogo.png">
   <link rel="stylesheet" href="../sidebar.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
  	<title>Skyrim Table Insert</title>
   </head>
 <body>
@@ -42,18 +43,18 @@ if($_SESSION['staff'] != 1) {
 	<?php if($_SESSION['staff'] == 1): ?>
               <li class="sidebar-brand">
                   <a href="tableInsertForm.php">
-                    <span class="fa fa-home solo">Insert</span>
+                    <span class="fa fa-plus circle">Insert</span>
                   </a>
               </li>
               <li class="sidebar-brand">
                   <a href="../search/export.php" data-scroll>
-                          <span class="fa fa-home solo">Export</span>
+                          <span class="fa fa-download solo">Export</span>
                   </a>
               </li>
          <?php endif; ?>
 		<li class="sidebar-brand">
                   <a href="../logout.php" data-scroll>
-                      <span class="fa fa-home solo">Logout</span>
+                      <span class="fa fa-sign-out">Logout</span>
                   </a>
               </li>
           </ul>
@@ -62,118 +63,342 @@ if($_SESSION['staff'] != 1) {
 
   <div id="page-content-wrapper">
   <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: black; font-size: 30px; position: fixed;">
-      <i class="fa fa-bars"></i>
   </a>
-
+  <script>
+      window['i'] = 0;
+  </script>
 <div class="container">
-  <h2>Insert into Location</h2>
-  <BR>
-  <form action="locationInsert.php" method="post">
-  Coordinates: <input type="number" name="coordinates">
-  Region: <input type="text" name="region">
-  Title: <input type="text" name="title">
-  <button class="btn btn-primary" type="Submit">Submit</button>
-  </form>
-
-  <BR>
-
-  <h2>Insert into NPC</h2>
-  <form action="npcInsert.php" method="post">
-  Name: <input type="text" name="name">
-  Race: <input type="text" name="race">
-  <button class="btn btn-primary" type="Submit">Submit</button>
-  </form>
-
-  <BR>
-
-  <h2>Insert into Weapons</h2>
-  <form action="weaponInsert.php" method="post">
-  Name: <input type="text" name="name">
-  Damage: <input type="number" name="damage">
-  Value: <input type="number" name="value">
-  Weight: <input type="number" name="weight">
-  <button class="btn btn-primary" type="Submit">Submit</button>
-  </form>
-
-
-  <BR>
-
-  <h2>Insert into Creatures</h2>
-  <form action="creatureInsert.php" method="post">
-  Species: <input type="text" name="species">
-  <button class="btn btn-primary" type="Submit">Submit</button>
-  </form>
-
-
-  <BR>
-
-  <h2>Insert into Quests</h2>
-  <form action="questInsert.php" method="post">
-  Difficulty: <input type="number" name="difficulty">
-  Title: <input type="text" name="title">
-  <button class="btn btn-primary" type="Submit">Submit</button>
-  </form>
-
-
-  <BR>
-
-  <h2>Insert into Loot</h2>
-  <form action="lootInsert.php" method="post">
-  Name: <input type="text" name="name">
-  Value: <input type="text" name="value">
-  Weight: <input type="text" name="weight">
-  <button class="btn btn-primary" type="Submit">Submit</button>
-  </form>
-
-
-  <BR>
-
-  <h2>Insert into begins (Quest begins at Location)</h2>
-  <form action="beginsInsert.php" method="post">
-  Location Name: <input type="text" name="locationID">
-  Quest Name: <input type="text" name="questID">
-  <button class="btn btn-primary" type="Submit">Submit</button>
-  </form>
-
-
-  <BR>
-
-    <h2>Insert into drops (Creature drops Loot)</h2>
-    <form action="dropsInsert.php" method="post">
-    Creature Species: <input type="text" name="actorID">
-    Loot Name: <input type="text" name="itemID">
-    <button class="btn btn-primary" type="Submit">Submit</button>
-    </form>
-
-
-    <BR>
-
-  <h2>Insert into issues (NPC issues Quest)</h2>
-  <form action="issuesInsert.php" method="post">
-  NPC Name: <input type="text" name="actorID">
-  Quest Name: <input type="text" name="questID">
-  <button class="btn btn-primary" type="Submit">Submit</button>
-  </form>
-
-
-  <BR>
-
-  <h2>Insert into located (Creature located at)</h2>
-  <form action="locatedInsert.php" method="post">
-  Creature Name: <input type="text" name="actorID">
-  Location Name: <input type="text" name="locationID">
-  <button class="btn btn-primary" type="Submit">Submit</button>
-  </form>
-
-
-  <BR>
-
-  <h2>Insert into wields (NPC wields weapon)</h2>
-  <form action="wieldsInsert.php" method="post">
-  NPC Name: <input type="text" name="actorID">
-  Weapon Name: <input type="text" name="itemID">
-  <button class="btn btn-primary" type="Submit">Submit</button>
-  </form>
+  <div class="panel panel-default" style="width: 75%; margin-left: auto; margin-right: auto; margin-top: 10px;">
+                    <div class="panel-heading" style="background-color: black;">
+                        <h3 class="panel-title" style="color: white;">Add Entities</h3>
+                    </div>
+                    <ul class="list-group">
+                            <li class="list-group-item">
+                                <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
+                                    <script>
+                                        $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
+                                        $("#dropdown-detail-").attr("id", "dropdown-detail-" + window.i);
+                                    </script>
+                                    <div class="col-xs-10">
+                                      Add a Location
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-chevron-down pull-right"></i></div>
+                                </div>
+                                <div id="detail-">
+                                    <script>
+                                        $("#detail-").attr("id", "detail-" + window.i);
+                                        window.i++;
+                                    </script>
+                                    <hr></hr>
+                                    <div class="container">
+                                        <div class="fluid-row">
+                                            <form action="locationInsert.php" method="post">
+                                            Coordinates: <input type="number" name="coordinates">
+                                            Region: <input type="text" name="region">
+                                            Title: <input type="text" name="title">
+                                            <button class="btn btn-primary" type="Submit">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
+                                    <script>
+                                        $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
+                                        $("#dropdown-detail-").attr("id", "dropdown-detail-" + window.i);
+                                    </script>
+                                    <div class="col-xs-10">
+                                      Add an NPC
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-chevron-down pull-right"></i></div>
+                                </div>
+                                <div id="detail-">
+                                    <script>
+                                        $("#detail-").attr("id", "detail-" + window.i);
+                                        window.i++;
+                                    </script>
+                                    <hr></hr>
+                                    <div class="container">
+                                        <div class="fluid-row">
+                                          <form action="npcInsert.php" method="post">
+                                          Name: <input type="text" name="name">
+                                          Race: <input type="text" name="race">
+                                          <button class="btn btn-primary" type="Submit">Submit</button>
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
+                                    <script>
+                                        $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
+                                        $("#dropdown-detail-").attr("id", "dropdown-detail-" + window.i);
+                                    </script>
+                                    <div class="col-xs-10">
+                                      Add a Weapon
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-chevron-down pull-right"></i></div>
+                                </div>
+                                <div id="detail-">
+                                    <script>
+                                        $("#detail-").attr("id", "detail-" + window.i);
+                                        window.i++;
+                                    </script>
+                                    <hr></hr>
+                                    <div class="container">
+                                        <div class="fluid-row">
+                                          <form action="weaponInsert.php" method="post">
+                                            Name: <input type="text" name="name">
+                                            Damage: <input type="number" name="damage">
+                                            Value: <input type="number" name="value">
+                                          </br>
+                                        </br>
+                                            Weight: <input type="number" name="weight">
+                                            <button class="btn btn-primary" type="Submit">Submit</button>
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
+                                    <script>
+                                        $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
+                                        $("#dropdown-detail-").attr("id", "dropdown-detail-" + window.i);
+                                    </script>
+                                    <div class="col-xs-10">
+                                      Add a Creature
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-chevron-down pull-right"></i></div>
+                                </div>
+                                <div id="detail-">
+                                    <script>
+                                        $("#detail-").attr("id", "detail-" + window.i);
+                                        window.i++;
+                                    </script>
+                                    <hr></hr>
+                                    <div class="container">
+                                        <div class="fluid-row">
+                                          <form action="creatureInsert.php" method="post">
+                                          Species: <input type="text" name="species">
+                                          <button class="btn btn-primary" type="Submit">Submit</button>
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
+                                    <script>
+                                        $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
+                                        $("#dropdown-detail-").attr("id", "dropdown-detail-" + window.i);
+                                    </script>
+                                    <div class="col-xs-10">
+                                      Add a Quest
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-chevron-down pull-right"></i></div>
+                                </div>
+                                <div id="detail-">
+                                    <script>
+                                        $("#detail-").attr("id", "detail-" + window.i);
+                                        window.i++;
+                                    </script>
+                                    <hr></hr>
+                                    <div class="container">
+                                        <div class="fluid-row">
+                                          <form action="questInsert.php" method="post">
+                                          Difficulty: <input type="number" name="difficulty">
+                                          Title: <input type="text" name="title">
+                                          <button class="btn btn-primary" type="Submit">Submit</button>
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
+                                    <script>
+                                        $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
+                                        $("#dropdown-detail-").attr("id", "dropdown-detail-" + window.i);
+                                    </script>
+                                    <div class="col-xs-10">
+                                      Add an Item
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-chevron-down pull-right"></i></div>
+                                </div>
+                                <div id="detail-">
+                                    <script>
+                                        $("#detail-").attr("id", "detail-" + window.i);
+                                        window.i++;
+                                    </script>
+                                    <hr></hr>
+                                    <div class="container">
+                                        <div class="fluid-row">
+                                          <form action="lootInsert.php" method="post">
+                                          Name: <input type="text" name="name">
+                                          Value: <input type="text" name="value">
+                                          Weight: <input type="text" name="weight">
+                                          <button class="btn btn-primary" type="Submit">Submit</button>
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
+                                    <script>
+                                        $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
+                                        $("#dropdown-detail-").attr("id", "dropdown-detail-" + window.i);
+                                    </script>
+                                    <div class="col-xs-10">
+                                      Give a Quest a Start Point
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-chevron-down pull-right"></i></div>
+                                </div>
+                                <div id="detail-">
+                                    <script>
+                                        $("#detail-").attr("id", "detail-" + window.i);
+                                        window.i++;
+                                    </script>
+                                    <hr></hr>
+                                    <div class="container">
+                                        <div class="fluid-row">
+                                          <form action="beginsInsert.php" method="post">
+                                          Location Name: <input type="text" name="locationID">
+                                          Quest Name: <input type="text" name="questID">
+                                          <button class="btn btn-primary" type="Submit">Submit</button>
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
+                                    <script>
+                                        $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
+                                        $("#dropdown-detail-").attr("id", "dropdown-detail-" + window.i);
+                                    </script>
+                                    <div class="col-xs-10">
+                                      Give a Creature Loot to Drop
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-chevron-down pull-right"></i></div>
+                                </div>
+                                <div id="detail-">
+                                    <script>
+                                        $("#detail-").attr("id", "detail-" + window.i);
+                                        window.i++;
+                                    </script>
+                                    <hr></hr>
+                                    <div class="container">
+                                        <div class="fluid-row">
+                                          <form action="dropsInsert.php" method="post">
+                                          Creature Species: <input type="text" name="actorID">
+                                          Loot Name: <input type="text" name="itemID">
+                                          <button class="btn btn-primary" type="Submit">Submit</button>
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
+                                    <script>
+                                        $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
+                                        $("#dropdown-detail-").attr("id", "dropdown-detail-" + window.i);
+                                    </script>
+                                    <div class="col-xs-10">
+                                      Give an NPC a Quest to Issue
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-chevron-down pull-right"></i></div>
+                                </div>
+                                <div id="detail-">
+                                    <script>
+                                        $("#detail-").attr("id", "detail-" + window.i);
+                                        window.i++;
+                                    </script>
+                                    <hr></hr>
+                                    <div class="container">
+                                        <div class="fluid-row">
+                                          <form action="issuesInsert.php" method="post">
+                                          NPC Name: <input type="text" name="actorID">
+                                          Quest Name: <input type="text" name="questID">
+                                          <button class="btn btn-primary" type="Submit">Submit</button>
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
+                                    <script>
+                                        $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
+                                        $("#dropdown-detail-").attr("id", "dropdown-detail-" + window.i);
+                                    </script>
+                                    <div class="col-xs-10">
+                                      Give a Creature a Spawn Point
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-chevron-down pull-right"></i></div>
+                                </div>
+                                <div id="detail-">
+                                    <script>
+                                        $("#detail-").attr("id", "detail-" + window.i);
+                                        window.i++;
+                                    </script>
+                                    <hr></hr>
+                                    <div class="container">
+                                        <div class="fluid-row">
+                                          <form action="locatedInsert.php" method="post">
+                                          Creature Name: <input type="text" name="actorID">
+                                          Location Name: <input type="text" name="locationID">
+                                          <button class="btn btn-primary" type="Submit">Submit</button>
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
+                                    <script>
+                                        $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
+                                        $("#dropdown-detail-").attr("id", "dropdown-detail-" + window.i);
+                                    </script>
+                                    <div class="col-xs-10">
+                                      Give an NPC a Weapon to Wield
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-chevron-down pull-right"></i></div>
+                                </div>
+                                <div id="detail-">
+                                    <script>
+                                        $("#detail-").attr("id", "detail-" + window.i);
+                                        window.i++;
+                                    </script>
+                                    <hr></hr>
+                                    <div class="container">
+                                        <div class="fluid-row">
+                                          <form action="wieldsInsert.php" method="post">
+                                          NPC Name: <input type="text" name="actorID">
+                                          Weapon Name: <input type="text" name="itemID">
+                                          <button class="btn btn-primary" type="Submit">Submit</button>
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                          </ul>
+                        </div>
 </div>
 </div>
 </div>
@@ -204,5 +429,16 @@ if($_SESSION['staff'] != 1) {
           }
       }
   });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('[id^=detail-]').hide();
+        $('.toggle').click(function () {
+            $input = $(this);
+            $target = $('#' + $input.attr('data-toggle'));
+            $target.slideToggle();
+        });
+    });
 </script>
 </html>

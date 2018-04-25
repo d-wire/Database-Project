@@ -20,6 +20,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<link rel="icon" href="search/SkyrimLogo.png">
   <link rel="stylesheet" href="sidebar.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
  	<title>Skyrim Table of Contents</title>
 <body style="background-image: url('map.jpg'); background-repeat: no-repeat; background-size: cover;" width= "100%" height=auto>
 
@@ -37,18 +38,18 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 		  <?php	if($_SESSION['staff'] == '1'): ?>
 		  <li class="sidebar-brand">
                         <a href="insert/tableInsertForm.php">
-                          <span class="fa fa-home solo">Insert</span>
+                          <span class="fa fa-plus circle">Insert</span>
                         </a>
                     </li>
                     <li class="sidebar-brand">
                       <a href="search/export.php" data-scroll>
-                          <span class="fa fa-home solo">Export</span>
+                          <span class="fa fa-download solo">Export</span>
                       </a>
                     </li>
 		   <?php endif; ?>
                     <li class="sidebar-brand">
                         <a href="logout.php" data-scroll>
-                            <span class="fa fa-home solo">Logout</span>
+                            <span class="fa fa-sign-out">Logout</span>
                         </a>
                     </li>
                 </ul>
@@ -57,7 +58,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 
         <div id="page-content-wrapper">
                    <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: white; font-size: 30px;">
-                       <i class="fa fa-bars"></i>
                    </a>
 
   <table class="table" style="display: block; margin-right: auto; margin-left: auto; position: relative; left: 12%; top: 50px; width: 70%;">

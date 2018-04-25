@@ -17,7 +17,7 @@ $stmt = $db->stmt_init();
 if($_POST['questID'] != '')
 {
    $id = $_POST['questID'];
-   if($stmt->prepare("DELETE FROM skyrim_Quest WHERE questID=$id") or die(mysqli_error($db))) 
+   if($stmt->prepare("DELETE FROM skyrim_Quest WHERE questID=$id") or die(mysqli_error($db)))
    {
        $stmt->execute();
        $stmt->close();
@@ -35,6 +35,7 @@ if($_POST['questID'] != '')
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <link rel="stylesheet" href="../sidebar.css">
   <link rel="icon" href="SkyrimLogo.png">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 	<title>Skyrim Quest Search</title>
 	<script>
 	$(document).ready(function() {
@@ -88,18 +89,18 @@ if($_POST['questID'] != '')
       <?php	if($_SESSION['staff'] == '1'): ?>
       <li class="sidebar-brand">
                         <a href="../insert/tableInsertForm.php">
-                          <span class="fa fa-home solo">Insert</span>
+                          <span class="fa fa-plus circle">Insert</span>
                         </a>
                     </li>
                     <li class="sidebar-brand">
                       <a href="export.php" data-scroll>
-                          <span class="fa fa-home solo">Export</span>
+                          <span class="fa fa-download solo">Export</span>
                       </a>
                     </li>
        <?php endif; ?>
                     <li class="sidebar-brand">
                         <a href="../logout.php" data-scroll>
-                            <span class="fa fa-home solo">Logout</span>
+                            <span class="fa fa-sign-out">Logout</span>
                         </a>
                     </li>
                 </ul>
@@ -108,7 +109,6 @@ if($_POST['questID'] != '')
 
         <div id="page-content-wrapper">
                    <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: black; font-size: 30px;">
-                       <i class="fa fa-bars"></i>
                    </a>
 <div class="container">
   <h3 style="position: relative; left: -15px;">Search by Quest Title</h3>
