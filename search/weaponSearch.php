@@ -41,11 +41,11 @@ if($_POST['itemID'] != '')
 	<title>Skyrim Weapon Search</title>
 	<script>
 	$(document).ready(function() {
-		$("#button1").click(function() {
+		$("#button").click(function() {
 
 			$.ajax({
 				url: 'weaponQuery.php',
-				data: {weapon: $( "#searchWeaponInput" ).val()},
+				data: {param: $( "#searchWeapon" ).val(), gt: $( "#gt" ).prop("checked"), lt: $( "#lt" ).prop("checked"), sb: $( "#sb" ).val() },
 				success: function(data){
 					$('#searchWeaponResult').html(data);
 
@@ -55,58 +55,6 @@ if($_POST['itemID'] != '')
 
 	});
 	</script>
-
-	<script>
-	$(document).ready(function() {
-		$("#button2").click(function() {
-
-			$.ajax({
-				url: 'weaponQuery.php',
-				data: {damage: $( "#searchWeaponDamage" ).val(), gt: $( "#gt" ).prop("checked"), lt: $( "#lt" ).prop("checked")},
-				success: function(data){
-					$('#searchWeaponResult2').html(data);
-
-				}
-			});
-		});
-
-	});
-	</script>
-
-	<script>
-	$(document).ready(function() {
-		$("#button3").click(function() {
-
-			$.ajax({
-				url: 'weaponQuery.php',
-				data: {value: $( "#searchWeaponValue" ).val(), gt2: $( "#gt2" ).prop("checked"), lt2: $( "#lt2" ).prop("checked")},
-				success: function(data){
-					$('#searchWeaponResult3').html(data);
-
-				}
-			});
-		});
-
-	});
-	</script>
-
-	<script>
-	$(document).ready(function() {
-		$("#button4").click(function() {
-
-			$.ajax({
-				url: 'weaponQuery.php',
-				data: {weight: $( "#searchWeaponWeight" ).val(), gt3: $( "#gt3" ).prop("checked"), lt3: $( "#lt3" ).prop("checked")},
-				success: function(data){
-					$('#searchWeaponResult4').html(data);
-
-				}
-			});
-		});
-
-	});
-	</script>
-
 </head>
 <body>
 
@@ -146,56 +94,25 @@ if($_POST['itemID'] != '')
                    <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: black; font-size: 30px;">
                    </a>
 <div class="container">
-	<h3 style="position: relative; left: -15px;">Search by Weapon Name</h3>
+	<h3 style="position: relative; left: -15px;">Search Weapons</h3>
 		<div class="row">
 			<div class="form-group">
-	       <input class="form-control" style="width: 20%;" id="searchWeaponInput" type="search" size="30" placeholder="Weapon Name"/>
-	       <button id="button1" class="btn btn-primary">Search</button>
+	       <input class="form-control" style="width: 20%;" id="searchWeapon" type="search" size="30" placeholder=""/>
+	       <button id="button" class="btn btn-primary">Search</button>
       </div>
     </div>
-  <h4 style="position: relative; left: 25px;">Weapon Name Search Result</h4>
+      <select style="position: relative; left: -15px;" id="sb">
+	<option value="sbn">Name</option>
+	<option value="sbd">Damage</option>
+	<option value="sbw">Weight</option>
+	<option value="sbv">Value</option>
+      </select></br>
+       <span><input type="checkbox" id="gt"/>Greater Than</span>
+        <span style="position: relative; left: 10px;"><input type="checkbox" id="lt"/>Less Than</span>
+
+  <h4 style="position: relative; left: 25px;">Weapon Search Result</h4>
 	<div id="searchWeaponResult"></div>
-</br>
-	</br>
 
-	<h3 style="position: relative; left: -15px;">Search by Weapon Damage</h3>
-    <div class="row">
-      <div class="form-group">
-         <input class="form-control" style="width: 20%;" id="searchWeaponDamage" type="search" size="30" placeholder="Weapon Damage"/>
-         <button id="button2" class="btn btn-primary">Search</button>
-      </div>
-    </div>
-	<span style="position: relative; left: -15px;"><input type="checkbox" class="form-check-input" id="gt"/>Greater Than</span>
-	<span style="position: relative; left: -5px;"><input type="checkbox" class="form-check-input" id="lt"/>Less Than</span>
-  <h4 style="position: relative; left: 25px;">Weapon Damage Search Result</h4>
-	<div id="searchWeaponResult2"></div>
-	<br/><br/>
-
-	<h3 style="position: relative; left: -15px;">Search by Weapon Value</h3>
-    <div class="row">
-      <div class="form-group">
-         <input class="form-control" style="width: 20%;" id="searchWeaponValue" type="search" size="30" placeholder="Weapon Value"/>
-         <button id="button3" class="btn btn-primary">Search</button>
-      </div>
-    </div>
-	<span style="position: relative; left: -15px;"><input type="checkbox" class="form-check-input" id="gt2"/>Greater Than</span>
-	<span style="position: relative; left: -5px;"><input type="checkbox" class="form-check-input" id="lt2"/>Less Than</span>
-  <h4 style="position: relative; left: 25px;">Weapon Value Search Result</h4>
-	<div id="searchWeaponResult3"></div>
-	<br/><br/>
-
-	<h3 style="position: relative; left: -15px;">Search by Weapon Weight</h3>
-    <div class="row">
-      <div class="form-group">
-         <input class="form-control" style="width: 20%;" id="searchWeaponWeight" type="search" size="30" placeholder="Weapon Weight"/>
-         <button id="button4" class="btn btn-primary">Search</button>
-      </div>
-    </div>
-	<span style="position: relative; left: -15px;"><input type="checkbox" class="form-check-input" id="gt3"/>Greater Than</span>
-	<span style="position: relative; left: -5px;"><input type="checkbox" class="form-check-input" id="lt3"/>Less Than</span>
-  <h4 style="position: relative; left: 25px;">Weapon Weight Search Result</h4>
-	<div id="searchWeaponResult4"></div>
-	<br/><br/>
 </div>
 </div>
 </div>
