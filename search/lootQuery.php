@@ -57,7 +57,7 @@
 
                 $stmt1->prepare("SET @p0='$searchString';");
                 $stmt2->prepare("SET @p1='$type';");
-                if($stmt->prepare("CALL `get_loot_value`(@p0, @p1);") or die(mysqli_error($db))) {
+                if($stmt->prepare("CALL `get_loot_val`(@p0, @p1);") or die(mysqli_error($db))) {
                         $stmt1->execute();
                         $stmt2->execute();
                         $stmt->execute();
