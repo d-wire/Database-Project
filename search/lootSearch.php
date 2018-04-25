@@ -100,7 +100,7 @@ if($_POST['itemID'] != '')
       </div>
     </div>
     <span style="font-size: 18px;">Search by:</span>
-  <select class="custom-select" style="position: relative; left: 15px; margin-bottom: 10px; color: black;" id="sb">
+  <select class="custom-select" style="position: relative; left: 15px; margin-bottom: 10px; color: black; width: 10%;" id="sb">
 	<option value="sbn">Name</option>
 	<option value="sbv">Value</option>
 	<option value="sbw">Weight</option>
