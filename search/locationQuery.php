@@ -18,7 +18,7 @@
                                 <td>$coordinates</td>\n
                                 <td>$region</td>\n
                                 <td>$title</td>\n
-                                <td>\n
+                                <td style ='width:50px;'>\n
                                         <form action='./locationSearch.php' method='post'>\n
                                         <button type=submit id='location$locationID' name='locationID' value='$locationID' class='btn btn-danger itemBtn'>Delete</button>
                                         </form>\n
@@ -52,7 +52,7 @@
                                 <td>$coordinates</td>\n
                                 <td>$region</td>\n
                                 <td>$title</td>\n
-                                <td>\n
+                                <td style ='width:50px;'>\n
                                         <form action='./locationSearch.php' method='post'>\n
                                         <button type=submit id='location$locationID' name='locationID' value='$locationID' class='btn btn-danger itemBtn'>Delete</button>
                                         </form>\n

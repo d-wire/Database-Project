@@ -17,7 +17,7 @@
                                 <td>$questID</td>\n
 																<td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td>\n
 																<td>$difficulty</td>\n
-                                <td>\n
+                                <td style ='width:50px;'>\n
                                         <form action='./questSearch.php' method='post'>\n
                                         <button type=submit id='title$questID' name='questID' value='$questID' class='btn btn-danger itemBtn'>Delete</button>
                                         </form>\n
@@ -63,7 +63,7 @@
                                 <td>$questID</td>\n
                                 <td>$title <a class='btn btn-primary itemBtn pull-right' href='quest_result?id={$questID}'>Where Do I Begin?</a></td>\n
 																<td>$difficulty</td>\n
-                                <td>\n
+                                <td style ='width:50px;'>\n
                                         <form action='./questSearch.php' method='post'>\n
                                         <button type=submit id='difficulty$questID' name='questID' value='$questID' class='btn btn-danger itemBtn'>Delete</button>
                                         </form>\n
