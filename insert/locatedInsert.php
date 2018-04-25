@@ -1,5 +1,5 @@
 <?php
- require "search/dbutil.php";
+ require "../search/dbutil.php";
  $db = DbUtil::loginConnection();
 
  $stmt = $db->stmt_init();
@@ -41,7 +41,7 @@
       echo "<a class='btn btn-primary' href='tableInsertForm.php'>Back</a>";
       echo "<h2 style='text-align: center'>Creature: {$creature}</h2>";
       echo "<h2 style='text-align: center'>Location: {$location}<h2>";
-      echo "<h2 style='text-align: center'>Insterted into skyrim_located"; // Output to user
+      echo "<h2 style='text-align: center'>Inserted into skyrim_located"; // Output to user
     }
 }
   $stmt->close();
