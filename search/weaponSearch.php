@@ -96,7 +96,6 @@ if($_POST['itemID'] != '')
 <div class="container">
 	<h3 style="position: relative; left: -15px; padding-left: 10px;">Search Weapons</h3>
 		<div class="row">
-<<<<<<< HEAD
 			<div class="form-group" style="padding-left: 10px;">
 	       <input class="form-control" style="width: 20%; margin-bottom: 5px;" id="searchWeapon" type="search" size="30" placeholder="Weapon"/>
 	       <button id="button" class="btn btn-primary">Search</button>
