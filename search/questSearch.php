@@ -57,7 +57,7 @@ if($_POST['questID'] != '')
 
 
 </head>
-<body>
+<body style="background-image: url('../skyrim_bg.jpg'); background-repeat: no-repeat; background-size: cover; color: white;" width= "100%" height=auto>
 
   <div id="wrapper">
 
@@ -92,20 +92,20 @@ if($_POST['questID'] != '')
         </div>
 
         <div id="page-content-wrapper">
-                   <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: black; font-size: 30px;">
+                   <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: white; font-size: 30px;">
                    </a>
 <div class="container">
-  <h3 style="position: relative; left: -15px;">Search by Quest Title</h3>
+  <h3 style="position: relative; left: -15px; padding-left: 10px;">Search Quests</h3>
 		<div class="row">
-			<div class="form-group">
-	       <input class="form-control" style="width: 20%;" id="searchQuest" type="search" size="30" placeholder=""/>
+			<div class="form-group" style="padding-left: 10px;">
+	       <input class="form-control" style="width: 20%;" id="searchQuest" type="search" size="30" placeholder="Quest"/>
 	       <button id="button" class="btn btn-primary">Search</button>
       </div>
     </div>
-    
-      <select style="position: relative; left: -15px;" id="sb">
-	<option value="sbt">Title</option>
-	<option value="sbd">Difficulty</option>
+    <span style="font-size: 18px;">Search by:</span>
+      <select style="color: black; width: 10%;" id="sb">
+      	<option value="sbt">Title</option>
+      	<option value="sbd">Difficulty</option>
       </select></br>
        <span><input type="checkbox" id="gt"/>Greater Than</span>
         <span style="position: relative; left: 10px;"><input type="checkbox" id="lt"/>Less Than</span>

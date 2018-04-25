@@ -28,7 +28,7 @@ if($_SESSION['staff'] != 1) {
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
  	<title>Skyrim Table Insert</title>
   </head>
-<body>
+<body style="background-image: url('../skyrim_bg.jpg'); background-repeat: no-repeat; background-size: cover; color: white;" width= "100%" height=auto>
 
 <div id="wrapper">
   <!-- Sidebar -->
@@ -62,13 +62,13 @@ if($_SESSION['staff'] != 1) {
   </div>
 
   <div id="page-content-wrapper">
-  <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: black; font-size: 30px; position: fixed;">
+  <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: white; font-size: 30px; position: fixed;">
   </a>
   <script>
       window['i'] = 0;
   </script>
 <div class="container">
-  <div class="panel panel-default" style="width: 75%; margin-left: auto; margin-right: auto; margin-top: 10px;">
+  <div class="panel panel-default" style="width: 75%; margin-left: auto; margin-right: auto; margin-top: 10px; color: black;">
                     <div class="panel-heading" style="background-color: black;">
                         <h3 class="panel-title" style="color: white;">Add Entities</h3>
                     </div>
