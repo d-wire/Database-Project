@@ -34,7 +34,6 @@
    }
  }
 
-
  if($location != -1 && $quest != -1) {
     if($stmt->prepare("insert into skyrim_begins (locationID, questID) values (?, ?)") or die(mysqli_error($db))) {
       $stmt->bind_param("ss", $location, $quest);
@@ -42,8 +41,12 @@
       echo "<a class='btn btn-primary' href='tableInsertForm.php'>Back</a>";
       echo "<h2 style='text-align: center'>Location: {$location}</h2>";
       echo "<h2 style='text-align: center'>Quest: {$quest}<h2>";
-      echo "<h2 style='text-align: center'>Inserted into skyrim_begins"; // Output to user
+      echo "<h2 style='text-align: center'>Insterted into skyrim_begins"; // Output to user
     }
+}
+else {
+  echo "<a class='btn btn-primary' href='tableInsertForm.php'>Back</a>";
+  echo "<h2 style='text-align: center;'>One of those entities does not exist</h2>";
 }
   $stmt->close();
   $db->close();
