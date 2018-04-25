@@ -58,7 +58,7 @@ if($_POST['locationID'] != '')
 	</script>
 
 </head>
-<body>
+<body style="background-image: url('../skyrim_bg.jpg'); background-repeat: no-repeat; background-size: cover; color: white;" width= "100%" height=auto>
 
   <div id="wrapper">
 
@@ -93,18 +93,20 @@ if($_POST['locationID'] != '')
         </div>
 
         <div id="page-content-wrapper">
-                   <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: black; font-size: 30px;">
+                   <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: white; font-size: 30px;">
                    </a>
 	<div class="container">
-	<h3 style="position: relative; left: -15px;">Search Locations</h3>
+	<h3 style="position: relative; left: -15px; padding-left: 10px;">Search Locations</h3>
 		<div class="row">
-			<div class="form-group">
+			<div class="form-group" style="padding-left: 10px;">
 				<input class="form-control" style="width: 20%;" id="searchLocation" type="search" size="30" placeholder=""/>
 				<button id="button" class="btn btn-primary">Search</button>
 			</div>
 		</div>
+    <span style="font-size: 18px;">
       Search by:
-      <select style="position: relative; left: -15px;" id="sb">
+    </span>
+      <select id="sb" style="color: black;">
 	<option value="sbr">Region</option>
 	<option value="sbt">Title</option>
       </select>
