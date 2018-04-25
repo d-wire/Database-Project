@@ -55,7 +55,7 @@ if($_POST['itemID'] != '')
         });
         </script>
 </head>
-<body>
+<body style="background-image: url('../skyrim_bg.jpg'); background-repeat: no-repeat; background-size: cover; color: white;" width= "100%" height=auto>
   <div id="wrapper">
 
         <!-- Sidebar -->
@@ -89,29 +89,29 @@ if($_POST['itemID'] != '')
         </div>
 
         <div id="page-content-wrapper">
-                   <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: black; font-size: 30px;">
+                   <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: white; font-size: 30px;">
                    </a>
 <div class="container">
-        <h3 style="position: relative; left: -15px;">Search by Loot Value</h3>
+        <h3 style="position: relative; left: -15px; padding-left: 10px;">Search Loot</h3>
                 <div class="row">
-                        <div class="form-group">
-               <input class="form-control" style="width: 20%;" id="searchLoot"
-type="search" size="30" placeholder="Loot Value"/>
-               <button id="button" class="btn btn-primary">Search</button>
+                        <div class="form-group" style="padding-left: 10px;">
+                           <input class="form-control" style="width: 20%;" id="searchLoot" type="search" size="30" placeholder="Loot"/>
+                           <button id="button" class="btn btn-primary">Search</button>
       </div>
     </div>
-    Search by:
-      <select style="position: relative; left: -15px;" id="sb">
+    <span style="font-size: 18px;">Search by:</span>
+  <select class="custom-select" style="position: relative; left: 15px; margin-bottom: 10px; color: black;" id="sb">
 	<option value="sbn">Name</option>
 	<option value="sbv">Value</option>
 	<option value="sbw">Weight</option>
       </select>
-        <span style="position: relative; left: -15px;"><input type="checkbox" id="gt"/>Greater Than</span>
-        <span style="position: relative; left: -5px;"><input type="checkbox" id="lt"/>Less Than</span>
+    </br>
+        <span><input type="checkbox" id="gt"/>Greater Than</span>
+        <span style="position: relative; left: 10px;"><input type="checkbox" id="lt"/>Less Than</span>
 
   <h4 style="position: relative; left: 25px;">Search Result</h4>
   <div id="searchLootResult"></div>
-        </br>
+</br></br>
 </div>
 </div>
 </div>
