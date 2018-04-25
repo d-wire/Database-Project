@@ -16,7 +16,7 @@
                         echo "<tr>\n
                                 <td>$actorID</td>\n
                                 <td>$species <a class='btn btn-primary itemBtn pull-right' href='creature_result?id={$actorID}'>Where Am I?</a></td>\n
-                                <td>\n
+                                <td style='width: 50px;'>\n
                                         <form action='./creatureSearch.php' method='post'>\n
                                         <button type=submit id='species$actorID' name='actorID' value='$actorID' class='btn btn-danger itemBtn'>Delete</button>
                                         </form>\n

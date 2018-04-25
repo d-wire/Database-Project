@@ -73,7 +73,7 @@ if($_SESSION['staff'] != 1) {
                         <h3 class="panel-title" style="color: white;">Add Entities</h3>
                     </div>
                     <ul class="list-group">
-                            <li class="list-group-item">
+                            <li class="list-group-item" style="background-color: #e8ebef;">
                                 <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
                                     <script>
                                         $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
@@ -103,7 +103,7 @@ if($_SESSION['staff'] != 1) {
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item" style="background-color: #e8ebef;">
                                 <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
                                     <script>
                                         $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
@@ -132,7 +132,7 @@ if($_SESSION['staff'] != 1) {
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item" style="background-color: #e8ebef;">
                                 <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
                                     <script>
                                         $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
@@ -165,7 +165,7 @@ if($_SESSION['staff'] != 1) {
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item" style="background-color: #e8ebef;">
                                 <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
                                     <script>
                                         $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
@@ -193,7 +193,7 @@ if($_SESSION['staff'] != 1) {
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item" style="background-color: #e8ebef;">
                                 <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
                                     <script>
                                         $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
@@ -222,7 +222,7 @@ if($_SESSION['staff'] != 1) {
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item" style="background-color: #e8ebef;">
                                 <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
                                     <script>
                                         $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
@@ -252,7 +252,7 @@ if($_SESSION['staff'] != 1) {
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item" style="background-color: #e8ebef;">
                                 <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
                                     <script>
                                         $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
@@ -281,7 +281,7 @@ if($_SESSION['staff'] != 1) {
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item" style="background-color: #e8ebef;">
                                 <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
                                     <script>
                                         $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
@@ -310,7 +310,7 @@ if($_SESSION['staff'] != 1) {
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item" style="background-color: #e8ebef;">
                                 <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
                                     <script>
                                         $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
@@ -339,7 +339,7 @@ if($_SESSION['staff'] != 1) {
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item" style="background-color: #e8ebef;">
                                 <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
                                     <script>
                                         $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);
@@ -368,7 +368,7 @@ if($_SESSION['staff'] != 1) {
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item" style="background-color: #e8ebef;">
                                 <div class="row toggle" id="dropdown-detail-" data-toggle="detail-">
                                     <script>
                                         $("#dropdown-detail-").attr("data-toggle", "detail-" + window.i);

@@ -56,7 +56,7 @@ if($_POST['actorID'] != '')
 
 
 </head>
-<body>
+<body style="background-image: url('../skyrim_bg.jpg'); background-repeat: no-repeat; background-size: cover; color: white;" width= "100%" height=auto>
 
   <div id="wrapper">
 
@@ -91,13 +91,13 @@ if($_POST['actorID'] != '')
         </div>
 
         <div id="page-content-wrapper">
-                   <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: black; font-size: 30px;">
+                   <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: white; font-size: 30px;">
                    </a>
 <div class="container">
-	<h3 style="position: relative; left: -15px;">Search by Creature Species</h3>
+	<h3 style="position: relative; left: -15px; padding-left: 10px;">Search by Creature Species</h3>
 		<div class="row">
-			<div class="form-group">
-	         <input class="form-control" style="width: 20%;" id="searchCreatureSpecies" type="search" size="30" placeholder="Creature Species"/>
+			<div class="form-group" style="padding-left: 10px;">
+	         <input class="form-control" style="width: 20%; margin-bottom: 5px;" id="searchCreatureSpecies" type="search" size="30" placeholder="Creature Species"/>
 	         <button id="button1" class="btn btn-primary">Search</button>
         </div>
       </div>

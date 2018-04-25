@@ -24,7 +24,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
  	<title>Skyrim Entity Export</title>
 </head>
 
-<body>
+<body style="background-image: url('../skyrim_bg.jpg'); background-repeat: no-repeat; background-size: cover; color: white;" width= "100%" height=auto>
   <div id="wrapper">
 
         <!-- Sidebar -->
@@ -58,14 +58,14 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
         </div>
 
         <div id="page-content-wrapper">
-                   <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: black; font-size: 30px;">
+                   <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle" style="color: white; font-size: 30px;">
                    </a>
 
 <div class="container">
   <h2>Select a table to export:</h2>
     <div class="form-group">
 	<form action="exportAction.php" method="post">
-		<select class="form-control" name="entity" style="width: 40%;">
+		<select class="form-control" style="color: black; margin-bottom: 5px; width: 30%;" name="entity" style="width: 40%;">
 			<option value="creatures">Creatures</option>
 			<option value="locations">Locations</option>
 			<option value="loot">Loot</option>

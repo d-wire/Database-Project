@@ -97,7 +97,7 @@ if($_POST['actorID'] != '')
   <h3 style="position: relative; left: -15px; padding-left: 10px;">Search NPCs</h3>
 		<div class="row">
 			<div class="form-group" style="padding-left: 10px;">
-	       <input class="form-control" style="width: 20%;" id="searchNPC" type="search" size="30" placeholder="NPC"/>
+	       <input class="form-control" style="width: 20%;  margin-bottom: 5px;" id="searchNPC" type="search" size="30" placeholder="NPC"/>
 	       <button id="button" class="btn btn-primary">Search</button>
       </div>
     </div>
